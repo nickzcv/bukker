@@ -1,0 +1,12 @@
+{
+  "name": "Dizayn.by",
+  "version": "1.0.0",
+  "private": true,
+  "authors": [
+    "Nick"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "lesshat": "~3.0.2"
+  }
+}

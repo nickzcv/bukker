@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name": "Dizayn.by",
+      "script": "gulp",
+      "watch": false
+    }
+  ]
+}
