@@ -36,7 +36,7 @@
 				source: 'sprite',
 				output: 'css',
 				less: 'less',
-				namespace: 'dizayn',
+				namespace: 'bukker',
 				retina: true,
 				margin: 1
 			}));

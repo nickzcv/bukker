@@ -69,7 +69,7 @@ app.engine('handlebars', exphbs({
 app.use(function (req, res, next) {
 	res.locals.template_data = {
 		layout: 'main',
-		meta_title: 'Dizayn.by'
+		meta_title: 'Bukker'
 	};
 	next();
 });
@@ -91,7 +91,7 @@ app.use(function (req, res) {
 });
 
 // Start web server.
-app.locals.port = 3333;
+app.locals.port = 80;
 
 if (
 	typeof process.env.PORT !== 'undefined' &&
