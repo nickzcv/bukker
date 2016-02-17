@@ -32,7 +32,7 @@ app.use(function (req, res, next) {
 });
 
 // Serve static files.
-app.use('/', express.static('public'));
+//app.use('/', express.static('public'));
 app.use('/static', express.static('public'));
 app.use('/static/css', express.static('css'));
 app.use('/static/bower_components', express.static('bower_components'));
