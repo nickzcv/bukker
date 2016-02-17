@@ -1,8 +1,8 @@
 {
   "apps": [
     {
-      "name": "Dizayn.by",
-      "script": "gulp",
+      "name": "Bukker",
+      "script": "server/index.js",
       "watch": false
     }
   ]
