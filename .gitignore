@@ -1,5 +1,6 @@
 .idea/
 node_modules/
-css/
+
 design/
 bower_components/
+css/index.css

@@ -32,7 +32,6 @@ app.use(function (req, res, next) {
 });
 
 // Serve static files.
-//app.use('/', express.static('public'));
 app.use('/static', express.static('public'));
 app.use('/static/css', express.static('css'));
 app.use('/static/bower_components', express.static('bower_components'));
@@ -91,7 +90,7 @@ app.use(function (req, res) {
 });
 
 // Start web server.
-app.locals.port = 80;
+app.locals.port = 3333;
 
 if (
 	typeof process.env.PORT !== 'undefined' &&
