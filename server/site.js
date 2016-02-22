@@ -14,7 +14,11 @@ router.get('/userlist', function(req, res) {
 	var db = req.db;
 	var collection = db.get('usercollection');
 	collection.find({},{},function(e,docs){
-		res.render('home', res.locals.template_data);
+		res.render('home', res.locals.template_data = {
+			layout: 'main',
+			meta_title: 'Bukker2',
+			docs: docs
+		});
 		console.log(docs);
 	});
 });
