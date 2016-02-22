@@ -3,7 +3,16 @@ var express = require('express'),
 	fs = require('fs'),
 	winston = require('winston'),
 	app = express(),
-	basic_auth = require('basic-auth');
+	basic_auth = require('basic-auth'),
+	mongo = require('mongodb'),
+	monk = require('monk'),
+	db = monk('localhost:27017/test1');
+
+// Make our db accessible to our router
+app.use(function(req,res,next){
+	req.db = db;
+	next();
+});
 
 // Set up a logger.
 app.locals.logger = new winston.Logger();
