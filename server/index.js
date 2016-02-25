@@ -6,7 +6,7 @@ var express = require('express'),
 	basic_auth = require('basic-auth'),
 	mongo = require('mongodb'),
 	monk = require('monk'),
-	db = monk('localhost:27017/test1');
+	db = monk('localhost:27017/bukker');
 
 // Make our db accessible to our router
 app.use(function(req,res,next){
