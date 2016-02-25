@@ -5,13 +5,13 @@
             <div class="col-md-12"><img src="http://placehold.it/350x250"></div>
         </div>
         <div class="row">
-            {{#each docs}}
+            {{#each book}}
             <div class="col-md-4">{{@index}}. {{title}} - {{description}}</div>
             {{/each}}
         </div>
 
         <div class="row">
-            <form action="/" method="post">
+            <form action="/" method="post" enctype="multipart/form-data">
                 <fieldset>
                     <legend>add book form:</legend>
                     title:<br>
@@ -21,7 +21,8 @@
                     author:<br>
                     <input type="text" name="author" value="author"/><br>
                     cover:<br>
-                    <input type="text" name="cover" value="cover"/><br><br>
+                    <input type="file" name="cover" /><br>
+                    <br>
                     <input type="submit" value="Submit">
                 </fieldset>
             </form>
