@@ -25,7 +25,7 @@ app.locals.unauthorized = function (res) {
 	return res.sendStatus(401);
 };
 
-app.use(function (req, res, next) {
+app.use(function (req, res, next)  {
 	if (req.hostname === 'localhost')
 		return next();
 
@@ -43,6 +43,7 @@ app.use(function (req, res, next) {
 // Serve static files.
 app.use('/static', express.static('public'));
 app.use('/static/css', express.static('css'));
+app.use('/covers', express.static('covers'));
 app.use('/static/bower_components', express.static('bower_components'));
 
 // Log every request.

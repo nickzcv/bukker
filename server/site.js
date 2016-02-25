@@ -34,7 +34,7 @@ router.get('/', function(req, res) {
 			meta_title: 'Bukker2',
 			book: books
 		});
-		//res.json(docs);
+		//res.json(books);
 	});
 });
 
@@ -42,18 +42,26 @@ router.use(bodyparser.urlencoded({
 	extended: false
 }));
 
-router.post('/', upload.single('cover'), function(req, res) {
+
+router.post('/addbook', upload.single('cover'), function(req, res) {
 	var db = req.db,
+		//validation
 		title = req.body.title,
 		description = req.body.description,
-		author = req.body.author;
-		console.log(req.file.filename);
+		author = req.body.author,
+		year = parseInt(req.body.year),
+		ganre = req.body.ganre,
+		cover = req.file.filename,
 		books = db.get('books');
+	//insert to database
 	books.insert({
 		'title' : title,
 		'description' : description,
 		'author' : author,
-		'cover' : req.file.filename
+		'year': year,
+		'ganre': ganre,
+		'date': new Date(),
+		'cover' : cover
 	}, function (error, curent) {
 		if (error) {
 			res.send("Could not create new book.");
