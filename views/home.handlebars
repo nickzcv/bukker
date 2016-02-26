@@ -1,44 +1,39 @@
-<section>
+<section class="main">
 
-    <div class="container">
-        <div class="row">
+	<h1>Header 1</h1>
+	<h2>subheader here</h2>
 
-        </div>
-        <div class="row">
-            {{#each book}}
-            <div class="col-md-4">
-                {{@index}}. {{title}} - {{description}}
+	<div class="book-list">
+			{{#each book}}
+			<div class="book">
+				<div><img src="covers/{{cover}}" title="{{title}}"></div>
+				<div>{{title}}</div>
+				<div>{{author}}</div>
+			</div>
+			{{/each}}
+		</div>
 
-                {{#if cover}}
-                    <img src="covers/{{cover}}" title="{{title}}" width="250px">
-                {{else}}
-                    <img src="http://placehold.it/250x350" title="{{title}}">
-                {{/if}}
-            </div>
-            {{/each}}
-        </div>
+		<div>
+			<form action="addbook" method="post" enctype="multipart/form-data">
+				<fieldset>
+					<legend>add book form:</legend>
+					title:<br>
+					<input type="text" name="title" value="Title"/><br>
+					description:<br>
+					<input type="text" name="description" value="Description here"/><br>
+					author:<br>
+					<input type="text" name="author" value="Author Name"/><br>
+					year:<br>
+					<input type="number" maxlength="4" name="year" value="2016"/><br>
+					Ganre:<br>
+					<input type="text" name="ganre" value="fantasy"/><br>
+					cover:<br>
+					<input type="file" name="cover" /><br>
+					<br>
+					<input type="submit" value="Submit">
+				</fieldset>
+			</form>
+		</div>
 
-        <div class="row">
-            <form action="addbook" method="post" enctype="multipart/form-data">
-                <fieldset>
-                    <legend>add book form:</legend>
-                    title:<br>
-                    <input type="text" name="title" value="Title"/><br>
-                    description:<br>
-                    <input type="text" name="description" value="Description here"/><br>
-                    author:<br>
-                    <input type="text" name="author" value="Author Name"/><br>
-                    year:<br>
-                    <input type="number" maxlength="4" name="year" value="2016"/><br>
-                    Ganre:<br>
-                    <input type="text" name="ganre" value="fantasy"/><br>
-                    cover:<br>
-                    <input type="file" name="cover" /><br>
-                    <br>
-                    <input type="submit" value="Submit">
-                </fieldset>
-            </form>
-        </div>
-    </div>
 
 </section>

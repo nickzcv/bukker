@@ -45,14 +45,18 @@ router.use(bodyparser.urlencoded({
 
 router.post('/addbook', upload.single('cover'), function(req, res) {
 	var db = req.db,
+		books = db.get('books');
 		//validation
 		title = req.body.title,
 		description = req.body.description,
 		author = req.body.author,
 		year = parseInt(req.body.year),
 		ganre = req.body.ganre,
-		cover = req.file.filename,
-		books = db.get('books');
+		cover = '200x300.png';
+
+		if(req.file.filename){
+			cover = req.file.filename
+		}
 	//insert to database
 	books.insert({
 		'title' : title,
