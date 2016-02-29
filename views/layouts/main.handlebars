@@ -17,9 +17,25 @@
     <link rel="stylesheet" type="text/css" href="{{static-root}}/css/index.css">
 </head>
 <body>
-	{{>header}}
+<div id="wrapper">
+
+	<!-- Sidebar -->
+	{{>sidebar}}
+	<!-- /#sidebar-wrapper -->
+
+	<!-- Page Content -->
+	<div id="page-content-wrapper">
+
+		{{>header}}
 		{{{body}}}
-	{{>footer}}
+		{{>footer}}
+
+	</div>
+	<!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
 	<script type="text/javascript" src="{{static-root}}/bower_components/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="{{static-root}}/js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="{{static-root}}/js/bootstrap.min.js"></script>
