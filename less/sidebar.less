@@ -1,112 +1,143 @@
 /* Toggle Styles */
 
 #wrapper {
-  padding-left: 0;
-  .lh-transition(all 0.5s ease);
+	padding-left: 0;
+	.lh-transition(all 0.5s ease);
+	/*
+	&.toggled {
+		padding-left: 250px;
 
-  &.toggled {
-    padding-left: 250px;
+		#sidebar-wrapper {
+			width: 50px;
+		}
+		#page-content-wrapper {
+			position: relative;
 
-    #sidebar-wrapper {
-      width: 250px;
-    }
-    #page-content-wrapper {
-      position: absolute;
-      margin-right: -250px;
-    }
-  }
-
+		}
+	}*/
 }
 
 #sidebar-wrapper {
-  z-index: 1000;
-  position: fixed;
-  left: 250px;
-  width: 0;
-  height: 100%;
-  margin-left: -250px;
-  overflow-y: auto;
-  background: #000;
-  .lh-transition(all 0.5s ease);
+	z-index: 1000;
+	position: fixed;
+	left: 250px;
+	width: 50px;
+	height: 100%;
+	margin-left: -250px;
+	overflow-y: auto;
+	background: #000;
+	overflow-x: hidden;
+	.lh-transition(all 0.5s ease);
 }
 
 #page-content-wrapper {
-  width: 100%;
-  position: absolute;
+	position: relative;
+	margin-left: 50px;
+
 }
 
 /* Sidebar Styles */
 
 .sidebar-nav {
-  position: absolute;
-  top: 0;
-  width: 250px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+	position: absolute;
+	top: 0;
+	width: 250px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
 
-  li {
-    text-indent: 20px;
-    line-height: 40px;
+	li {
+		line-height: 40px;
 
-    a {
-      display: block;
-      text-decoration: none;
-      color: #fff;
+		a {
+			display: block;
+			text-decoration: none;
+			color: #fff;
 
-      &:hover {
-        text-decoration: none;
-        color: #fff;
-        background: rgba(255,255,255,0.2);
-      }
-      &:active,
-      &:focus {
-        text-decoration: none;
-      }
-    }
-  }
-  > .sidebar-brand {
-    text-indent: 100px;
-    line-height: 130px;
-    height: 130px;
-    font-size: 40px;
-    background: #55ac98;
-    margin-bottom: 20px;
+			i {
+				margin: 0 20px 0 15px;
+				font-size: 25px;
+				float: left;
+				color: #d0d0d0;
+				min-width: 20px;
+				&.active {
+					color: #5cc7b2;
+				}
+			}
+			&:hover {
+				text-decoration: none;
+				color: #fff;
+				background: rgba(255,255,255,0.2);
+			}
+			&:active,
+			&:focus {
+				text-decoration: none;
+			}
+		}
+	}
+	> .sidebar-brand {
+		text-indent: 10px;
+		line-height: 100px;
+		height: 100px;
+		font-size: 40px;
+		background: #55ac98;
+		margin-bottom: 20px;
+		overflow: hidden;
+		.lh-transition(all 0.5s ease);
 
-    a {
-      color: #fff;
+		.logo {
+			text-indent: 0;
+			/* generated using sandbox.juan-i.com/longshadows/ */
+			text-shadow: rgb(77, 155, 137) 1px 1px, rgb(77, 155, 137) 2px 2px, rgb(77, 155, 137) 3px 3px, rgb(77, 155, 137) 4px 4px, rgb(77, 156, 137) 5px 5px, rgb(77, 156, 138) 6px 6px, rgb(77, 156, 138) 7px 7px, rgb(77, 156, 138) 8px 8px, rgb(77, 156, 138) 9px 9px, rgb(78, 157, 138) 10px 10px, rgb(78, 157, 139) 11px 11px, rgb(78, 157, 139) 12px 12px, rgb(78, 157, 139) 13px 13px, rgb(78, 158, 139) 14px 14px, rgb(78, 158, 139) 15px 15px, rgb(78, 158, 140) 16px 16px, rgb(78, 158, 140) 17px 17px, rgb(78, 158, 140) 18px 18px, rgb(78, 159, 140) 19px 19px, rgb(79, 159, 140) 20px 20px, rgb(79, 159, 141) 21px 21px, rgb(79, 159, 141) 22px 22px, rgb(79, 160, 141) 23px 23px, rgb(79, 160, 141) 24px 24px, rgb(79, 160, 141) 25px 25px, rgb(79, 160, 142) 26px 26px, rgb(79, 160, 142) 27px 27px, rgb(79, 161, 142) 28px 28px, rgb(80, 161, 142) 29px 29px, rgb(80, 161, 142) 30px 30px, rgb(80, 161, 143) 31px 31px, rgb(80, 162, 143) 32px 32px, rgb(80, 162, 143) 33px 33px, rgb(80, 162, 143) 34px 34px, rgb(80, 162, 143) 35px 35px, rgb(80, 162, 144) 36px 36px, rgb(80, 163, 144) 37px 37px, rgb(80, 163, 144) 38px 38px, rgb(81, 163, 144) 39px 39px, rgb(81, 163, 144) 40px 40px, rgb(81, 164, 144) 41px 41px, rgb(81, 164, 145) 42px 42px, rgb(81, 164, 145) 43px 43px, rgb(81, 164, 145) 44px 44px, rgb(81, 164, 145) 45px 45px, rgb(81, 165, 145) 46px 46px, rgb(81, 165, 146) 47px 47px, rgb(81, 165, 146) 48px 48px, rgb(82, 165, 146) 49px 49px, rgb(82, 166, 146) 50px 50px, rgb(82, 166, 146) 51px 51px, rgb(82, 166, 147) 52px 52px, rgb(82, 166, 147) 53px 53px, rgb(82, 166, 147) 54px 54px, rgb(82, 167, 147) 55px 55px, rgb(82, 167, 147) 56px 56px, rgb(82, 167, 148) 57px 57px, rgb(83, 167, 148) 58px 58px, rgb(83, 168, 148) 59px 59px, rgb(83, 168, 148) 60px 60px, rgb(83, 168, 148) 61px 61px, rgb(83, 168, 149) 62px 62px, rgb(83, 168, 149) 63px 63px, rgb(83, 169, 149) 64px 64px, rgb(83, 169, 149) 65px 65px, rgb(83, 169, 149) 66px 66px, rgb(83, 169, 150) 67px 67px, rgb(84, 170, 150) 68px 68px, rgb(84, 170, 150) 69px 69px, rgb(84, 170, 150) 70px 70px, rgb(84, 170, 150) 71px 71px, rgb(84, 170, 151) 72px 72px, rgb(84, 171, 151) 73px 73px, rgb(84, 171, 151) 74px 74px, rgb(84, 171, 151) 75px 75px, rgb(84, 171, 151) 76px 76px, rgb(85, 172, 152) 77px 77px;
+		}
 
-      &:hover {
-        color: #fff;
-        background: none;
-      }
-    }
-  }
+		a {
+			color: #fff;
 
+			&:hover {
+				color: #fff;
+				background: none;
+			}
+		}
+
+	}
 }
 
 
 @media(min-width:768px) {
-  #wrapper {
-    padding-left: 250px;
+	#wrapper {
+		padding-left: 250px;
+/*
+		&.toggled {
+			padding-left: 50px;
 
-    &.toggled {
-      padding-left: 0;
+			#sidebar-wrapper {
+				width: 50px;
+			}
+			#page-content-wrapper {
+				position: relative;
 
-      #sidebar-wrapper {
-        width: 0;
-      }
-      #page-content-wrapper {
-        position: relative;
-        margin-right: 0;
-      }
-    }
-  }
-  #sidebar-wrapper {
-    width: 250px;
-  }
-  #page-content-wrapper {
-    position: relative;
-  }
+			}
+		}
+*/
+	}
+	#sidebar-wrapper {
+		width: 250px;
+	}
+	#page-content-wrapper {
+		position: relative;
+		margin-left: 0;
+	}
 
+	.sidebar-nav {
+		> .sidebar-brand {
+			text-indent: 100px;
+			line-height: 100px;
+			height: 100px;
+			font-size: 60px;
+			background: #55ac98;
+			margin-bottom: 20px;
+			overflow: hidden;
+		}
+	}
 }
