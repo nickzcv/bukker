@@ -38,6 +38,12 @@ router.get('/', function(req, res) {
 	});
 });
 
+/* ADD BOOK */
+router.get('/addbook', function (req, res) {
+	res.render('addbook', res.locals.template_data);
+});
+
+
 router.use(bodyparser.urlencoded({
 	extended: false
 }));
@@ -54,7 +60,7 @@ router.post('/addbook', upload.single('cover'), function(req, res) {
 		ganre = req.body.ganre,
 		cover = '200x300.png';
 
-		if(req.file.filename){
+		if(req.file){
 			cover = req.file.filename
 		}
 	//insert to database
