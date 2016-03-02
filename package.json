@@ -15,6 +15,7 @@
     "mongodb": "~2.0.33",
     "monk": "~1.0.1",
     "multer": "^1.1.0",
+    "speakingurl": "^9.0.0",
     "winston": "^2.1.1"
   },
   "devDependencies": {

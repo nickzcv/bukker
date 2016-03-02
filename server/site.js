@@ -2,6 +2,7 @@
 	router     = express.Router(),
 	bodyparser = require('body-parser'),
 	nodemailer = require('nodemailer'),
+	getSlug = require('speakingurl'),
 	multer = require('multer'),
 	mime = require('mime'),
 	upload = multer({
@@ -24,8 +25,9 @@ router.get('/', function (req, res) {
 
 /* GET BOOKS list. */
 router.get('/', function(req, res) {
-	var db = req.db;
-	var collection = db.get('books');
+	var db = req.db,
+		collection = db.get('books');
+
 	collection.find({},{},function(err, books){
 		if (err) throw err;
 		res.render('home', res.locals.template_data = {
@@ -34,6 +36,29 @@ router.get('/', function(req, res) {
 			book: books
 		});
 		//res.json(books);
+	});
+});
+
+/* GET BOOK by url slug */
+router.get('/book/:url', function(req, res) {
+	var db = req.db,
+		url = req.params.url,
+		collection = db.get('books');
+
+	collection.findOne({ url: url }, function (err, book) {
+		if (err) { /* handle err */ }
+
+		if (book) {
+			 /*res.render('home', res.locals.template_data = {
+				 layout: 'main',
+				 meta_title: 'Буккер',
+				 book: book
+			 });*/
+			res.json(book);
+		} else {
+			res.status(404);
+		}
+
 	});
 });
 
@@ -60,11 +85,12 @@ router.post('/addbook', upload.single('cover'), function(req, res) {
 		author = req.body.author,
 		year = parseInt(req.body.year),
 		ganre = req.body.ganre,
-		cover = '200x300.png';
-
+		url = getSlug(title),
+		cover = 'default.png';
 		if(req.file){
 			cover = req.file.filename
 		}
+	//books.index('url', { unique: true });
 	//insert to database
 	books.insert({
 		'title' : title,
@@ -74,7 +100,7 @@ router.post('/addbook', upload.single('cover'), function(req, res) {
 		'ganre': ganre,
 		'date': new Date(),
 		'cover' : cover,
-		//'id' : { $inc : { "id" : 1 }}
+		'url' : url
 	}, function (error, curent) {
 		if (error) {
 			res.send("Could not create new book.");
