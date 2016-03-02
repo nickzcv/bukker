@@ -10,9 +10,11 @@
 	<div class="book-list">
 		{{#each book}}
 		<div class="book">
-			<div><img src="covers/{{cover}}" title="{{title}}"></div>
-			<div>{{title}}</div>
-			<div>{{author}}</div>
+			<div>
+				<img src="covers/{{cover}}" title="{{title}}">
+			</div>
+			<a href="/book/{{title}}" class="title">{{title}}</a>
+			<a href="/author/{{author}}" class="author">{{author}}</a>
 			<div>{{year}}</div>
 		</div>
 		{{/each}}

@@ -1,4 +1,4 @@
-var express    = require('express'),
+﻿var express    = require('express'),
 	router     = express.Router(),
 	bodyparser = require('body-parser'),
 	nodemailer = require('nodemailer'),
@@ -15,7 +15,6 @@ var express    = require('express'),
 		})
 	});
 
-
 // Home page.
 /*
 router.get('/', function (req, res) {
@@ -31,7 +30,7 @@ router.get('/', function(req, res) {
 		if (err) throw err;
 		res.render('home', res.locals.template_data = {
 			layout: 'main',
-			meta_title: 'Bukker2',
+			meta_title: 'Буккер',
 			book: books
 		});
 		//res.json(books);
@@ -40,7 +39,10 @@ router.get('/', function(req, res) {
 
 /* ADD BOOK */
 router.get('/addbook', function (req, res) {
-	res.render('addbook', res.locals.template_data);
+	res.render('addbook', res.locals.template_data = {
+		layout: 'main',
+		meta_title: 'Добавление книги в Буккер'
+	});
 });
 
 
@@ -71,11 +73,13 @@ router.post('/addbook', upload.single('cover'), function(req, res) {
 		'year': year,
 		'ganre': ganre,
 		'date': new Date(),
-		'cover' : cover
+		'cover' : cover,
+		//'id' : { $inc : { "id" : 1 }}
 	}, function (error, curent) {
 		if (error) {
 			res.send("Could not create new book.");
 		} else {
+			console.log("Inserted");
 			res.location('/');
 			res.redirect('/');
 		}
