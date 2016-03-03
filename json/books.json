@@ -4,9 +4,10 @@
     "title":"",
     "description":"",
     "author":"",
-    "date":"",
-    "dateAdd":"",
+    "year":"",
     "ganre":"",
-    "cover":"cover-1456408958446.png"
+	"date":"",
+    "cover":"",
+	"url":""
   }
 ]

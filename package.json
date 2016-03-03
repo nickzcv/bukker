@@ -8,6 +8,7 @@
   "dependencies": {
     "basic-auth": "^1.0.3",
     "body-parser": "^1.14.1",
+    "cheerio": "latest",
     "express": "^4.13.3",
     "express-handlebars": "^2.0.1",
     "mime": "^1.3.4",
@@ -15,6 +16,8 @@
     "mongodb": "~2.0.33",
     "monk": "~1.0.1",
     "multer": "^1.1.0",
+    "path": "^0.12.7",
+    "request": "latest",
     "speakingurl": "^9.0.0",
     "winston": "^2.1.1"
   },
