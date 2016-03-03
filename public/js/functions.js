@@ -2,11 +2,11 @@
 	'use strict';
 
 
-	<!-- Menu Toggle Script -->
-	$("#menu-toggle").click(function(e) {
-		e.preventDefault();
-		$("#wrapper").toggleClass("toggled");
-	});
+	//cover overlay toggle
+	$(".cover").on('click', function(){
+		$(".cover").removeClass("active");
+		$(this).toggleClass("active");
 
+	})
 
 }($));

@@ -70,9 +70,23 @@
 			float: left;
 			max-width: 200px;
 
-			img {
-				width: 200px;
-				height: 300px;
+			.cover {
+
+
+				&:hover .overlay,
+				&.active .overlay{
+					position: absolute;
+					background-color: #000011;
+					width: 200px;
+					height: 300px;
+					opacity: 0.7;
+					.lh-transition(all 0.3s ease);
+				}
+
+				img {
+					width: 200px;
+					height: 300px;
+				}
 			}
 
 			a {
