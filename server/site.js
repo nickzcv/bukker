@@ -30,7 +30,7 @@ router.get('/litres/', function (req, res, next) {
 	//url = req.params.url;
 	url = 'http://www.litres.ru/aleksandr-shumovich/smeshat-no-ne-vzbaltyvat-recepty-organizacii-meropriyatiy/';
 
-	//function to save cover
+	//function to download cover
 	var download = function(uri, filename, callback){
 		request.head(uri, function(err, res, body){
 			console.log('content-type:', res.headers['content-type']);
@@ -49,9 +49,9 @@ router.get('/litres/', function (req, res, next) {
 				title:"",
 				description:"",
 				year:"",
-				authors:"",
-				ganres:"",
-				tags:"",
+				authors:[""],
+				ganres:[""],
+				tags:[""],
 				date:"",
 				cover:"",
 				litresid:"",
@@ -101,9 +101,9 @@ router.get('/litres/', function (req, res, next) {
 				'title' : book.title,
 				'description' : book.description,
 				'year': book.year,
-				'authors' : book.authors,
-				'ganres': book.ganres,
-				'tags': book.tags,
+				'authors' : book.authors.split(','),
+				'ganres': book.ganres.split(','),
+				'tags': book.tags.split(','),
 				'date': new Date(),
 				'cover' : book.cover,
 				'litresid' : book.litresid,
@@ -183,13 +183,15 @@ router.use(bodyparser.urlencoded({
 router.post('/addbook', upload.single('cover'), function(req, res) {
 	var db = req.db,
 		books = db.get('books'),
-		//validation
+	//save form data
 		title = req.body.title,
 		description = req.body.description,
-		author = req.body.author,
 		year = parseInt(req.body.year),
-		ganre = req.body.ganre,
+		authors = req.body.authors.split(','),
+		ganres = req.body.ganres.split(','),
+		tags = req.body.tags.split(','),
 		url = getSlug(title),
+		litresid = req.body.litresid,
 		cover = 'default.png';
 		if(req.file){
 			cover = req.file.filename
@@ -199,11 +201,13 @@ router.post('/addbook', upload.single('cover'), function(req, res) {
 	books.insert({
 		'title' : title,
 		'description' : description,
-		'author' : author,
 		'year': year,
-		'ganres': ganre,
+		'authors' : authors,
+		'ganres': ganres,
+		'tags': tags,
 		'date': new Date(),
 		'cover' : cover,
+		'litresid' : litresid,
 		'url' : url
 	}, function (error, curent) {
 		if (error) {
