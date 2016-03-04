@@ -2,14 +2,14 @@
 	router     = express.Router(),
 	getSlug = require('speakingurl'),
 	request = require('request'),
+	bodyparser = require('body-parser'),
 	fs = require('fs'),
 	basic_auth = require('basic-auth'),
 	path = require('path'),
 	cheerio = require('cheerio');
 
-
-// litres parser
-router.get('/litres', function (req, res, next) {
+/* litres page */
+router.get('/litres', function (req, res) {
 	var user = basic_auth(req);
 	if (!user || !user.name || !user.pass)
 		return req.app.locals.unauthorized(res);
@@ -17,13 +17,24 @@ router.get('/litres', function (req, res, next) {
 	if (user.name != 'nick' && user.pass != 'nick')
 		return req.app.locals.unauthorized(res);
 
+	res.render('litres', res.locals.template_data = {
+		layout: 'main',
+		meta_title: 'Добавление книги из Litres'
+	});
+});
 
 
+router.use(bodyparser.urlencoded({
+	extended: false
+}));
+
+// litres URL parser
+router.post('/litres', function (req, res) {
 	var db = req.db,
 		books = db.get('books');
 
-	//url = req.params.url;
-	url = 'http://www.litres.ru/artem-kamenistyy/chuzhih-gor-plenniki/';
+	url =  req.body.url;
+	//url = 'http://www.litres.ru/artem-kamenistyy/chuzhih-gor-plenniki/';
 
 	//function to download cover
 	var download = function(uri, filename, callback){
@@ -115,7 +126,8 @@ router.get('/litres', function (req, res, next) {
 			});
 
 			console.log(book);
-			next();
+			res.location('/');
+			res.redirect('/');
 
 		}
 	})
