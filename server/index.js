@@ -20,12 +20,12 @@ app.locals.logger.add(winston.transports.Console, {
 	colorize: true,
 });
 
-/*
+
 app.locals.unauthorized = function (res) {
 	res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
 	return res.sendStatus(401);
 };
-
+/*
 app.use(function (req, res, next)  {
 	if (req.hostname === 'localhost')
 		return next();

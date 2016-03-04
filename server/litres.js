@@ -3,12 +3,22 @@
 	getSlug = require('speakingurl'),
 	request = require('request'),
 	fs = require('fs'),
+	basic_auth = require('basic-auth'),
 	path = require('path'),
 	cheerio = require('cheerio');
 
 
 // litres parser
 router.get('/litres', function (req, res, next) {
+	var user = basic_auth(req);
+	if (!user || !user.name || !user.pass)
+		return req.app.locals.unauthorized(res);
+
+	if (user.name != 'nick' && user.pass != 'nick')
+		return req.app.locals.unauthorized(res);
+
+
+
 	var db = req.db,
 		books = db.get('books');
 
