@@ -20,6 +20,7 @@ app.locals.logger.add(winston.transports.Console, {
 	colorize: true,
 });
 
+/*
 app.locals.unauthorized = function (res) {
 	res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
 	return res.sendStatus(401);
@@ -39,6 +40,7 @@ app.use(function (req, res, next)  {
 
 	return req.app.locals.unauthorized(res);
 });
+*/
 
 // Serve static files.
 app.use('/static', express.static('public'));
@@ -59,17 +61,11 @@ app.locals.static_root = '/static/';
 app.set('view engine', 'handlebars');
 app.engine('handlebars', exphbs({
 	helpers: {
-		each_nth: function (index_count, nth, block) {
-			if (index_count === 0)
-				return '';
-
-			if (index_count % nth === 0)
-				return block.fn(this);
-
-			return '';
-		},
 		'static-root': function (data) {
 			return '/static';
+		},
+		'main-root': function (data) {
+			return '/';
 		},
 	},
 }));
@@ -85,6 +81,7 @@ app.use(function (req, res, next) {
 
 // Display main site.
 app.use(require('./site.js'));
+app.use(require('./litres.js'));
 
 // Handle 500 (internal server erorr).
 app.use(function (error, req, res, next) {
@@ -100,7 +97,7 @@ app.use(function (req, res) {
 });
 
 // Start web server.
-app.locals.port = 3333;
+app.locals.port = 80;
 
 if (
 	typeof process.env.PORT !== 'undefined' &&

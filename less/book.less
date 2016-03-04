@@ -1,0 +1,85 @@
+.main {
+	.pageHeaderBook {
+		h1 {
+			width: 100%;
+			min-width: 250px;
+			height: 100px;
+			font-weight: lighter;
+			overflow: hidden;
+			font-size: 27px;
+			padding-top: 25px;
+			line-height: normal;
+			max-height: 300px;
+		}
+	}
+
+	.bookPage {
+		margin: 0 0 0 40px;
+		clear: both;
+		overflow: hidden;
+
+		.cover {
+			float: left;
+			margin: 0 40px 20px 0;
+		}
+		.info {
+			float: left;
+			max-width: 600px;
+
+			> div {
+				margin: 0 0 10px 0;
+			}
+
+			i {
+				font-size: 20px;
+				color: #b4b4b4;
+				position: relative;
+				top: 2px
+			}
+			.author {
+
+
+			}
+			.year {
+				font-size: 15px;
+				color: #727272;
+			}
+			.ganres, .tags {
+				font-size: 14px;
+				i {
+					top: 3px;
+				}
+			}
+			.stars i {
+				font-size: 29px;
+				color: #FF7F00;
+			}
+			.litres{
+				margin: 20px 0 0;
+				a {
+					width: 200px;
+					cursor: pointer;
+					display: block;
+					color: #fff;
+					background-color: #4d9c8a;
+					text-align: center;
+					letter-spacing: .5px;
+					font-weight: lighter;
+					padding: 5px 15px;
+					border: 2px solid #4d9c8a;
+					.lh-background-image(linear-gradient(to bottom, #4D9B94 0%,#54ab97  100%));
+
+					&:hover {
+						.lh-background-image(linear-gradient(to bottom, #54ab97 0%,#4D9B94  100%));
+					}
+				}
+			}
+		}
+		.description {
+			clear: left;
+			line-height: 22px;
+			color: #333;
+			max-width: 800px;
+		}
+	}
+}

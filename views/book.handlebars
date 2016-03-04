@@ -1,0 +1,47 @@
+<div class="main">
+
+	<div class="pageHeaderBook">
+		<h1>{{meta_title}}</h1>
+	</div>
+
+
+	<div class="bookPage">
+		<div class="cover">
+			<img src="{{main-root}}covers/{{book.cover}}" title="{{book.title}}">
+		</div>
+
+		<div class="info">
+			<div class="author">
+				<i class="ion-ios-person"></i>
+				<span>{{book.authors}}</span>
+			</div>
+			<div class="year">
+				Книга написана в {{book.year}} г.
+			</div>
+			<div class="ganres">
+				<i class="ion-ios-medical"></i>
+				<span>{{book.ganres}}</span>
+			</div>
+			<div class="tags">
+				<i class="ion-ios-color-filter-outline"></i>
+				<span>{{book.tags}}</span>
+			</div>
+			<div class="stars">
+				<i class="ion-android-star"></i>
+				<i class="ion-android-star"></i>
+				<i class="ion-android-star"></i>
+				<i class="ion-android-star-half"></i>
+				<i class="ion-android-star-outline"></i>
+			</div>
+			<div class="litres">
+				<a href="http://www.litres.ru/pages/biblio_basket/?art={{book.litresid}}&action=add_art_to_basket&lfrom={{litres_ref_id}}">Купить и скачать электронную книгу</a>
+			</div>
+		</div>
+		<div class="description">
+			{{book.description}}
+		</div>
+	</div>
+
+
+
+</div>
