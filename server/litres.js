@@ -73,27 +73,24 @@ router.post('/litres', function (req, res) {
 			$('#main-div .book-author a').each(function(i, elem) {
 				authors[i] = $(this).text();
 			});
-			book.authors = authors.join(', ');
+			book.authors = authors.join(',');
 
 			//ganres get all
 			var ganres = [];
 			$('#main-div dd a[itemprop=genre]').each(function(i, elem) {
 				ganres[i] = $(this).text();
 			});
-			book.ganres = ganres.join(', ');
+			book.ganres = ganres.join(',');
 
 			//tags get all
 			var tags = [];
 			$('#main-div dd:nth-child(6)').each(function(i, elem) {
 				tags[i] = $(this).text();
 			});
-			book.tags = tags.join(', ');
+			book.tags = tags.join(',');
 
 			var cover = $('#main-div .bookpage-cover img:nth-child(2)').attr("src");
 			var newName = 'cover-' + Date.now() + path.extname(cover);
-			download(cover, 'covers/'+newName, function(){
-				console.log('done');
-			});
 			book.cover = newName;
 
 			var litresid = $('link[rel=shortlink]').attr("href");
@@ -102,32 +99,37 @@ router.post('/litres', function (req, res) {
 			book.url = getSlug(book.title);
 
 			/* adding to DB */
-
-			books.insert({
-				'title' : book.title,
-				'description' : book.description,
-				'year': book.year,
-				'authors' : book.authors.split(','),
-				'ganres': book.ganres.split(','),
-				'tags': book.tags.split(','),
-				'date': new Date(),
-				'cover' : book.cover,
-				'litresid' : book.litresid,
-				'url' : book.url
-			}, function (error, curent) {
-				if (error) {
-					res.send("Could not create new book.");
+			books.findOne({
+				"url": book.url
+			}, function (err, bookForCheck) {
+				if (err) res.json(err);
+				if (bookForCheck) {
+					res.redirect(req.get('referer')+'#exist');
 				} else {
-					console.log("Inserted");
-					//res.location('/');
-					//res.redirect('/');
-				}
+					//start insert book to database
+					books.insert({
+						'title' : book.title,
+						'description' : book.description,
+						'year': book.year,
+						'authors' : book.authors.split(','),
+						'ganres': book.ganres.split(','),
+						'tags': book.tags.split(','),
+						'date': new Date(),
+						'cover' : book.cover,
+						'litresid' : book.litresid,
+						'url' : book.url
+					}, function (error, curent) {
+						if (error) {
+							res.redirect(req.get('referer')+'#eroor');
+						} else {
+							res.location('/');
+							res.redirect('/');
+						}
 
+					});//end insert book to database
+				}
 			});
 
-			console.log(book);
-			res.location('/');
-			res.redirect('/');
 
 		}
 	})
