@@ -13,18 +13,34 @@
 		<div class="info">
 			<div class="author">
 				<i class="ion-ios-person"></i>
-				<span>{{book.authors}}</span>
+				<span>
+					{{#each book.authors}}
+						<a href="{{main-root}}author/{{@key}}">{{this}}</a>{{#unless @last}},{{/unless}}
+					{{/each}}
+				</span>
 			</div>
 			<div class="year">
 				Книга написана в {{book.year}} г.
 			</div>
 			<div class="ganres">
 				<i class="ion-ios-medical"></i>
-				<span>{{book.ganres}}</span>
+				<span>
+					{{#each book.ganres}}
+						<a href="{{main-root}}ganre/{{@key}}">{{this}}</a>{{#unless @last}},{{/unless}}
+					{{else}}
+						<a href="{{main-root}}ganres/">Все жанры</a>
+					{{/each}}
+				</span>
 			</div>
 			<div class="tags">
 				<i class="ion-ios-color-filter-outline"></i>
-				<span>{{book.tags}}</span>
+				<span>
+					{{#each book.tags}}
+						<a href="{{main-root}}tag/{{@key}}">{{this}}</a>{{#unless @last}},{{/unless}}
+					{{else}}
+						<a href="{{main-root}}tags/">Все тэги</a>
+					{{/each}}
+				</span>
 			</div>
 			<div class="stars">
 				<i class="ion-android-star"></i>

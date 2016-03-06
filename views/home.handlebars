@@ -14,7 +14,11 @@
 				<img src="covers/{{cover}}" title="{{title}}">
 			</div>
 			<a href="/book/{{url}}" class="title">{{title}}</a>
-			<div class="author">{{authors}}</div>
+			<div class="author">
+				{{#each authors}}
+					{{this}}{{#unless @last}},{{/unless}}
+				{{/each}}
+			</div>
 			<div class="stars">
 				<i class="ion-android-star"></i>
 				<i class="ion-android-star"></i>

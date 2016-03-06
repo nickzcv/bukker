@@ -55,9 +55,9 @@ router.post('/litres', function (req, res) {
 				title:"",
 				description:"",
 				year:"",
-				authors:[""],
-				ganres:[""],
-				tags:[""],
+				authors:{},
+				ganres:{},
+				tags:{},
 				date:"",
 				cover:"",
 				litresid:"",
@@ -72,27 +72,29 @@ router.post('/litres', function (req, res) {
 			book.year = $('#main-div dd[itemprop=datePublished]').text().trim();
 
 			//authors get all
-			var authors = [];
+			var authors = {};
 			$('#main-div .book-author a').each(function(i, elem) {
-				authors[i] = $(this).text().trim();
+				var author_slug = getSlug( $(this).text() );
+				authors[author_slug] = $(this).text();
 			});
 			book.authors = authors;
 
 			//ganres get all
-			var ganres = [];
+			var ganres = {};
 			$('#main-div dd a[itemprop=genre]').each(function(i, elem) {
-				ganres[i] = $(this).text();
+				var ganre_slug = getSlug( $(this).text() );
+				ganres[ganre_slug] = $(this).text();
 			});
 			book.ganres = ganres;
 
 			//tags get all
-			var tags = [];
+			var tags = {};
 			$('#main-div dl dt').each(function(i, elem) {
 				if( $(this).text() == "Теги:" ){
-					var temp = $(this).next().children();
-					$( temp ).each(function(i, elem) {
-						tags[i] = $(this).text();
-						console.log( $(this).text());
+					var tagElement = $(this).next().children();
+					$(tagElement).each(function(i, elem) {
+						tag_slug = getSlug( $(this).text() );
+						tags[tag_slug] = $(this).text();
 					});
 				}
 			});
