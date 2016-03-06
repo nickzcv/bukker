@@ -56,6 +56,22 @@ router.get('/book/:url', function(req, res, next) {
 	});
 });
 
+/* Ganres page */
+router.get('/ganres', function (req, res) {
+	res.render('ganres', res.locals.template_data = {
+		layout: 'main',
+		meta_title: 'Жанры'
+	});
+});
+
+/* Tags page */
+router.get('/tags', function (req, res) {
+	res.render('tags', res.locals.template_data = {
+		layout: 'main',
+		meta_title: 'Тэги'
+	});
+});
+
 /* ADD BOOK page */
 router.get('/addbook', function (req, res) {
 	res.render('addbook', res.locals.template_data = {
