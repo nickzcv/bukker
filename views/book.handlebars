@@ -33,11 +33,14 @@
 				<i class="ion-android-star-half"></i>
 				<i class="ion-android-star-outline"></i>
 			</div>
-			<div class="litres">
-				<a href="http://www.litres.ru/pages/biblio_basket/?art={{book.litresid}}&action=add_art_to_basket&lfrom={{litres_ref_id}}">Купить и скачать электронную книгу</a>
-				<br>
-				<a class="read" target="_blank" href="http://www.litres.ru/pages/quickread/?art={{book.litresid}}&action=add_art_to_basket&lfrom={{litres_ref_id}}"><i class="ion-ios-bookmarks-outline"></i>Читать онлайн</a>
-			</div>
+			{{#if book.litresid}}
+				<div class="litres">
+					<a href="http://www.litres.ru/pages/biblio_basket/?art={{book.litresid}}&action=add_art_to_basket&lfrom={{litres_ref_id}}">Купить и скачать электронную книгу</a>
+					<br>
+					<a class="read" target="_blank" href="http://www.litres.ru/pages/quickread/?art={{book.litresid}}&action=add_art_to_basket&lfrom={{litres_ref_id}}"><i class="ion-ios-bookmarks-outline"></i>Читать онлайн</a>
+				</div>
+			{{/if}}
+
 		</div>
 		<div class="description">
 			{{book.description}}

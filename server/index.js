@@ -66,8 +66,8 @@ app.engine('handlebars', exphbs({
 		},
 		'main-root': function (data) {
 			return '/';
-		},
-	},
+		}
+	}
 }));
 
 // Set 'template_data' variable that will be used with all template rendering.

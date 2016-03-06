@@ -39,8 +39,8 @@ router.post('/litres', function (req, res) {
 	//function to download cover
 	var download = function(uri, filename, callback){
 		request.head(uri, function(err, res, body){
-			console.log('content-type:', res.headers['content-type']);
-			console.log('content-length:', res.headers['content-length']);
+			//console.log('content-type:', res.headers['content-type']);
+			//console.log('content-length:', res.headers['content-length']);
 
 			request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
 		});
@@ -65,29 +65,39 @@ router.post('/litres', function (req, res) {
 			};
 
 			book.title = $('#main-div .book-title').text();
-			book.description = $('#main-div .book_annotation').text();
-			book.year = $('#main-div dd[itemprop=datePublished]').text();
+
+			var str = $('#main-div .book_annotation').text();
+			book.description = str.substring(0, str.length-112);
+
+			book.year = $('#main-div dd[itemprop=datePublished]').text().trim();
 
 			//authors get all
 			var authors = [];
 			$('#main-div .book-author a').each(function(i, elem) {
-				authors[i] = $(this).text();
+				authors[i] = $(this).text().trim();
 			});
-			book.authors = authors.join(',');
+			book.authors = authors;
 
 			//ganres get all
 			var ganres = [];
 			$('#main-div dd a[itemprop=genre]').each(function(i, elem) {
 				ganres[i] = $(this).text();
 			});
-			book.ganres = ganres.join(',');
+			book.ganres = ganres;
 
 			//tags get all
 			var tags = [];
-			$('#main-div dd:nth-child(6)').each(function(i, elem) {
-				tags[i] = $(this).text();
+			$('#main-div dl dt').each(function(i, elem) {
+				if( $(this).text() == "Теги:" ){
+					var temp = $(this).next().children();
+					$( temp ).each(function(i, elem) {
+						tags[i] = $(this).text();
+						console.log( $(this).text());
+					});
+				}
 			});
-			book.tags = tags.join(',');
+			book.tags = tags;
+
 
 			var cover = $('#main-div .bookpage-cover img:nth-child(2)').attr("src");
 			var newName = 'cover-' + Date.now() + path.extname(cover);
@@ -110,10 +120,10 @@ router.post('/litres', function (req, res) {
 					books.insert({
 						'title' : book.title,
 						'description' : book.description,
-						'year': book.year,
-						'authors' : book.authors.split(','),
-						'ganres': book.ganres.split(','),
-						'tags': book.tags.split(','),
+						'year': parseInt(book.year),
+						'authors' : book.authors,
+						'ganres': book.ganres,
+						'tags': book.tags,
 						'date': new Date(),
 						'cover' : book.cover,
 						'litresid' : book.litresid,
@@ -122,8 +132,11 @@ router.post('/litres', function (req, res) {
 						if (error) {
 							res.redirect(req.get('referer')+'#eroor');
 						} else {
-							res.location('/');
-							res.redirect('/');
+							download(cover, 'covers/'+newName, function(){
+								res.location('/');
+								res.redirect('/');
+							});
+
 						}
 
 					});//end insert book to database
