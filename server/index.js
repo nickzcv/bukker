@@ -17,7 +17,7 @@ app.use(function(req,res,next){
 // Set up a logger.
 app.locals.logger = new winston.Logger();
 app.locals.logger.add(winston.transports.Console, {
-	colorize: true,
+	colorize: true
 });
 
 
@@ -61,6 +61,13 @@ app.locals.static_root = '/static/';
 app.set('view engine', 'handlebars');
 app.engine('handlebars', exphbs({
 	helpers: {
+		'formatDate': function (date) {
+			if (typeof(date) == "undefined") {
+				return "2016";
+			}
+			// These methods need to return a String
+			return date.getFullYear();
+		},
 		'static-root': function (data) {
 			return '/static';
 		},

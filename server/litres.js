@@ -58,6 +58,7 @@ router.post('/litres', function (req, res) {
 				authors:{},
 				ganres:{},
 				tags:{},
+				ratings:{},
 				date:"",
 				cover:"",
 				litresid:"",
@@ -69,7 +70,7 @@ router.post('/litres', function (req, res) {
 			var str = $('#main-div .book_annotation').text();
 			book.description = str.substring(0, str.length-112);
 
-			book.year = $('#main-div dd[itemprop=datePublished]').text().trim();
+			book.year = $('#main-div dd[itemprop=datePublished]').text();
 
 			//authors get all
 			var authors = {};
@@ -100,6 +101,15 @@ router.post('/litres', function (req, res) {
 			});
 			book.tags = tags;
 
+			//Rating get
+			var ratings = [{
+					"ratingTitle" : "ЛитРес",
+					"ratingScale" : $('meta[itemprop=bestRating]').attr('content'),
+					"ratingValue" : $('meta[itemprop=ratingValue]').attr('content'),
+					"ratingCount" : $('meta[itemprop=ratingCount]').attr('content')
+				}];
+
+			book.ratings = ratings;
 
 			var cover = $('#main-div .bookpage-cover img:nth-child(2)').attr("src");
 			var newName = 'cover-' + Date.now() + path.extname(cover);
@@ -126,6 +136,7 @@ router.post('/litres', function (req, res) {
 						'authors' : book.authors,
 						'ganres': book.ganres,
 						'tags': book.tags,
+						'ratings': book.ratings,
 						'date': new Date(),
 						'cover' : book.cover,
 						'litresid' : book.litresid,

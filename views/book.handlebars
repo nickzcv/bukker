@@ -19,9 +19,15 @@
 					{{/each}}
 				</span>
 			</div>
+			{{#if book.year}}
 			<div class="year">
 				Книга написана в {{book.year}} г.
 			</div>
+			{{else}}
+				<div class="year">
+					Книга добавлена в {{formatDate book.date}} г.
+				</div>
+			{{/if}}
 			<div class="ganres">
 				<i class="ion-ios-medical"></i>
 				<span>
@@ -43,11 +49,22 @@
 				</span>
 			</div>
 			<div class="stars">
-				<i class="ion-android-star"></i>
-				<i class="ion-android-star"></i>
-				<i class="ion-android-star"></i>
-				<i class="ion-android-star-half"></i>
-				<i class="ion-android-star-outline"></i>
+				{{#each book.ratings}}
+				<div class="ratingBox">
+					{{#each this}}
+						<meta {{@key}}="{{this}}">
+					{{/each}}
+				</div>
+
+				{{else}}
+				<div class="ratingBoxEmpty">
+					<i class="ion-android-star-outline"></i>
+					<i class="ion-android-star-outline"></i>
+					<i class="ion-android-star-outline"></i>
+					<i class="ion-android-star-outline"></i>
+					<i class="ion-android-star-outline"></i>
+				</div>
+				{{/each}}
 			</div>
 			{{#if book.litresid}}
 				<div class="litres">

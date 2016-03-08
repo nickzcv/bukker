@@ -16,12 +16,12 @@
 		})
 	});
 
-/* GET BOOKS list. */
+/* Home page. */
 router.get('/', function(req, res) {
 	var db = req.db,
 		books = db.get('books');
 
-	books.find({},{},function(err, books){
+	books.find({},{sort: {date: -1}},function(err, books){
 		if (err) throw err;
 		res.render('home', res.locals.template_data = {
 			layout: 'main',
@@ -56,11 +56,35 @@ router.get('/book/:url', function(req, res, next) {
 	});
 });
 
+/* GET BOOKS list. */
+router.get('/books', function(req, res) {
+	var db = req.db,
+		books = db.get('books');
+
+	books.find({},{},function(err, books){
+		if (err) throw err;
+		res.render('home', res.locals.template_data = {
+			layout: 'main',
+			meta_title: 'Буккер',
+			book: books
+		});
+		//res.json(books);
+	});
+});
+
 /* Ganres page */
 router.get('/ganres', function (req, res) {
-	res.render('ganres', res.locals.template_data = {
-		layout: 'main',
-		meta_title: 'Жанры'
+	var db = req.db,
+		books = db.get('books');
+
+	books.find({"title":"Антибункер"},{"ganres": true},function(err, ganres){
+		if (err) throw err;
+		/*res.render('ganres', res.locals.template_data = {
+			layout: 'main',
+			meta_title: 'Жанры',
+			ganre: ganres
+		});*/
+		res.json(ganres);
 	});
 });
 
