@@ -89,6 +89,7 @@ app.use(function (req, res, next) {
 // Display main site.
 app.use(require('./site.js'));
 app.use(require('./litres.js'));
+app.use(require('./litres-ganres.js'));
 
 // Handle 500 (internal server erorr).
 app.use(function (error, req, res, next) {
