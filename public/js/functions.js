@@ -1,4 +1,13 @@
-﻿(function ($) {
+$( document ).ready(function() {
+
+	$(".bookPage .info .stars .totalCount").on('click', function(){
+		$(this).children().toggle();
+	});
+
+});
+
+
+(function ($) {
 	'use strict';
 
 	//cover overlay toggle
@@ -8,43 +17,64 @@
 
 	});
 
+
+
 	//rating UI part
-
 	$(".ratingBox").each(function(){
-		var title = $(this).children().attr("ratingtitle");
-		var	scale = $(this).children().next().attr("ratingscale");
-		var	value = $(this).children().next().next().attr("ratingvalue");
-		var	count = $(this).children().next().next().next().attr("ratingcount");
+		var $emptyStars = '<div class="no-rate"><i class="ion-android-star-outline"></i><i class="ion-android-star-outline"></i><i class="ion-android-star-outline"></i><i class="ion-android-star-outline"></i><i class="ion-android-star-outline"></i></div>',
+			$star = '<i class="ion-android-star"></i>',
+			$starHalf = '<i class="ion-android-star-half"></i>',
+			$starEmpty = '<i class="ion-android-star-outline"></i>';
 
-		if(!value) {
-			return console.log( "false" );
+		//find generated meta tags
+		var	title = $(this).children().attr("ratingtitle"),
+			scale = $(this).children().next().attr("ratingscale"),
+			value = $(this).children().next().next().attr("ratingvalue"),
+			count = $(this).children().next().next().next().attr("ratingcount");
+
+		if(!title || title == "") {
+			return $(this).html($emptyStars);
 		}
 
+		if(!value || value == "") {
+			$(this).html($emptyStars);
+			return console.log( title + ": no ratings" );
+		}
+		// 5 - rate scale
 		if(scale == 5){
-			var $star = '<i class="ion-android-star"></i> ';
-			var $starHalf = '<i class="ion-android-star-half"></i> ';
-			var $starEmpty = '<i class="ion-android-star-outline"></i> ';
-
-			var TotalCount = parseInt(count);
-			var decimial = parseFloat(value) - parseInt(value);
-			var fullStars = parseInt(value);
+			console.log( value );
+			var TotalCount = parseInt(count); console.log( TotalCount ); // всего голосов
+			var decimial = parseFloat(value) - parseInt(value); console.log( decimial ); // остаток
+			var fullStars = parseInt(value); console.log( fullStars ); // целая часть
 			var $dom = "";
-
+			var step = 0;
 
 			for (var i= 0; i < fullStars; i++){
 				$dom = $dom + $star;
+				step++;
 			}
 
-			if(decimial>0){
+			if(decimial > 0.18){
 				$dom = $dom + $starHalf;
-			} else {
-				$dom = $dom + $starEmpty;
+				step++;
 			}
+
+			if(step == scale) {
+				console.log( 'ok' );
+			} else {
+				while(step!=scale){
+					$dom = $dom + $starEmpty;
+					step++;
+				}
+			}
+		}
+		// 10 - rate scale
+		if(scale == 10){
 
 		}
-
-		$(this).html($dom);
-
+		var $end = "<span class='count'>"+value+"</span><span class='totalCount arrow_box'>"+ TotalCount+" <span style='display: none'> оценок от "+title+"</span></span>";
+		//update html
+		$(this).html($dom + $end);
 	});
 
 }($));

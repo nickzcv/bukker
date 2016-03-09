@@ -20,11 +20,23 @@
 				{{/each}}
 			</div>
 			<div class="stars">
-				<i class="ion-android-star"></i>
-				<i class="ion-android-star"></i>
-				<i class="ion-android-star"></i>
-				<i class="ion-android-star-half"></i>
-				<i class="ion-android-star-outline"></i>
+				{{#each ratings}}
+					{{#if @first}}
+					<div class="ratingBox">
+						{{#each this}}
+							<meta {{@key}}="{{this}}">
+						{{/each}}
+					</div>
+					{{/if}}
+				{{else}}
+					<div class="ratingBoxEmpty">
+						<i class="ion-android-star-outline"></i>
+						<i class="ion-android-star-outline"></i>
+						<i class="ion-android-star-outline"></i>
+						<i class="ion-android-star-outline"></i>
+						<i class="ion-android-star-outline"></i>
+					</div>
+				{{/each}}
 			</div>
 		</div>
 		{{/each}}

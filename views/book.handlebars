@@ -16,6 +16,8 @@
 				<span>
 					{{#each book.authors}}
 						<a href="{{main-root}}author/{{@key}}">{{this}}</a>{{#unless @last}},{{/unless}}
+					{{else}}
+						Автор не известен
 					{{/each}}
 				</span>
 			</div>
