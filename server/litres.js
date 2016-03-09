@@ -68,7 +68,7 @@ router.post('/litres', function (req, res) {
 			book.title = $('#main-div .book-title').text();
 
 			var str = $('#main-div .book_annotation').text();
-			book.description = str.substring(0, str.length-112);
+			book.description = str;//str.substring(0, str.length-112);
 
 			book.year = $('#main-div dd[itemprop=datePublished]').text();
 

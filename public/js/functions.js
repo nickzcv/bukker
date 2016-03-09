@@ -37,15 +37,13 @@ $( document ).ready(function() {
 		}
 
 		if(!value || value == "") {
-			$(this).html($emptyStars);
-			return console.log( title + ": no ratings" );
+			return $(this).html($emptyStars);
 		}
 		// 5 - rate scale
 		if(scale == 5){
-			console.log( value );
-			var TotalCount = parseInt(count); console.log( TotalCount ); // всего голосов
-			var decimial = parseFloat(value) - parseInt(value); console.log( decimial ); // остаток
-			var fullStars = parseInt(value); console.log( fullStars ); // целая часть
+			var TotalCount = parseInt(count);// console.log( TotalCount ); // всего голосов
+			var decimial = parseFloat(value) - parseInt(value); //console.log( decimial ); // остаток
+			var fullStars = parseInt(value); //console.log( fullStars ); // целая часть
 			var $dom = "";
 			var step = 0;
 
@@ -59,9 +57,7 @@ $( document ).ready(function() {
 				step++;
 			}
 
-			if(step == scale) {
-				console.log( 'ok' );
-			} else {
+			if(step < scale) {
 				while(step!=scale){
 					$dom = $dom + $starEmpty;
 					step++;
