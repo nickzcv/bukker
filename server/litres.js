@@ -111,8 +111,11 @@ router.post('/litres', function (req, res) {
 
 			book.ratings = ratings;
 
-			var cover = $('#main-div .bookpage-cover img:nth-child(2)').attr("src");
-			var newName = 'cover-' + Date.now() + path.extname(cover);
+			var newName = "default.png";
+			if( $('#main-div .bookpage-cover img:nth-child(2)').attr("src") ){
+				var cover = $('#main-div .bookpage-cover img:nth-child(2)').attr("src");
+				newName = 'cover-' + Date.now() + path.extname(cover);
+			}
 			book.cover = newName;
 
 			var litresid = $('link[rel=shortlink]').attr("href");
@@ -145,11 +148,15 @@ router.post('/litres', function (req, res) {
 						if (error) {
 							res.redirect(req.get('referer')+'#eroor');
 						} else {
-							download(cover, 'covers/'+newName, function(){
+							if( newName == "default.png" ){
 								res.location('/');
 								res.redirect('/');
-							});
-
+							} else {
+								download(cover, 'covers/'+newName, function(){
+									res.location('/');
+									res.redirect('/');
+								});
+							}
 						}
 
 					});//end insert book to database
