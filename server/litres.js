@@ -41,7 +41,6 @@ router.post('/litres', function (req, res) {
 		request.head(uri, function(err, res, body){
 			//console.log('content-type:', res.headers['content-type']);
 			//console.log('content-length:', res.headers['content-length']);
-
 			request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
 		});
 	};
@@ -49,7 +48,7 @@ router.post('/litres', function (req, res) {
 	request(url, function(error, response, html){
 		if(!error){
 			var $ = cheerio.load(html);
-			var litresRefID = "156223639";
+			var litresRefID = "156223639"; //unused
 
 			var book = {
 				title:"",

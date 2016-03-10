@@ -61,7 +61,7 @@ router.get('/books', function(req, res) {
 	var db = req.db,
 		books = db.get('books');
 
-	books.find({},{},function(err, books){
+	books.find( { year: { $gte: 2000 } } ,{},function(err, books){
 		if (err) throw err;
 		res.render('home', res.locals.template_data = {
 			layout: 'main',

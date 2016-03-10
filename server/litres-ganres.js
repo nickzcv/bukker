@@ -25,36 +25,31 @@ router.get('/litres-ganres', function (req, res) {
 			$('#genres_tree > li').each(function(i, elem) {
 				ganre.title = $(this).find('.title').text();
 				ganre.url = getSlug( ganre.title );
-				$ul = $(this).find('ul');
 
 				var subGanres = {};
-				$( $ul ).each(function(i, elem) {
+				$(this).find("ul > li").each(function(i, elem) {
 					var slug = getSlug( $(this).text() );
 					subGanres[slug] = $(this).text();
 				});
+				ganre.subGanres = subGanres;
+				// adding to DB
+				ganres.insert({
+					'title' : ganre.title,
+					'url' : ganre.url,
+					'subGanres' : ganre.subGanres
 
+				}, function (error, curent) {
+					if (error) {
+						res.redirect(req.get('referer')+'#eroor');
+					} else {
+						//res.location('/');
+						//res.redirect('/');
+						console.log(ganre.title);
+					}
+
+				});//end insert to database
 			});
 
-			console.log(ganre);
-
-
-
-			//ganres.url = getSlug(book.title);
-
-			/* adding to DB
-			ganres.insert({
-				ganres: ganre
-			}, function (error, curent) {
-				if (error) {
-					res.redirect(req.get('referer')+'#eroor');
-				} else {
-					res.location('/');
-					res.redirect('/');
-				}
-
-			});//end insert to database
-
-			 */
 
 		}
 	})

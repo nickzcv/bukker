@@ -52,7 +52,7 @@ $( document ).ready(function() {
 				step++;
 			}
 
-			if(decimial > 0.18){
+			if(decimial > 0.19){
 				$dom = $dom + $starHalf;
 				step++;
 			}
@@ -68,7 +68,7 @@ $( document ).ready(function() {
 		if(scale == 10){
 
 		}
-		var $end = "<span class='count'>"+value+"</span><span class='totalCount arrow_box'>"+ TotalCount+" <span style='display: none'> оценок от "+title+"</span></span>";
+		var $end = "<span class='count'>"+value+"</span><span class='totalCount arrow_box'>"+ TotalCount+" <span style='display: none'> оценок от <strong>"+title+"</strong></span></span>";
 		//update html
 		$(this).html($dom + $end);
 	});
