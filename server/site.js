@@ -61,7 +61,7 @@ router.get('/books', function(req, res) {
 	var db = req.db,
 		books = db.get('books');
 
-	books.find( { year: { $gte: 2000 } } ,{},function(err, books){
+	books.find( {} ,{},function(err, books){
 		if (err) throw err;
 		res.render('home', res.locals.template_data = {
 			layout: 'main',
@@ -75,16 +75,16 @@ router.get('/books', function(req, res) {
 /* Ganres page */
 router.get('/ganres', function (req, res) {
 	var db = req.db,
-		books = db.get('books');
+		books = db.get('ganres');
 
-	books.find({"title":"Антибункер"},{"ganres": true},function(err, ganres){
+	books.find({},{},function(err, ganres){
 		if (err) throw err;
-		/*res.render('ganres', res.locals.template_data = {
+		res.render('ganres', res.locals.template_data = {
 			layout: 'main',
 			meta_title: 'Жанры',
 			ganre: ganres
-		});*/
-		res.json(ganres);
+		});
+		//console.log(ganres);
 	});
 });
 

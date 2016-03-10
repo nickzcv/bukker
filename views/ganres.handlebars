@@ -6,11 +6,18 @@
 
 		</div>
 	</div>
-	<div class="book-list">
+	<div class="ganre-list">
 		{{#each ganre}}
-		<div>
-			{{this.ganres}}
+            {{this.title}} - {{this.url}}
+            <div>
+            {{#each this.subGanres }}
+                <span>
+                {{@key}}  / {{this}}
+                </span>
+                <br>
+            {{/each}}
 		</div>
+            <hr>
 		{{/each}}
 	</div>
 
