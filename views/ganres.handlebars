@@ -8,16 +8,13 @@
 	</div>
 	<div class="ganre-list">
 		{{#each ganre}}
-            {{this.title}} - {{this.url}}
-            <div>
-            {{#each this.subGanres }}
-                <span>
-                {{@key}}  / {{this}}
-                </span>
-                <br>
-            {{/each}}
-		</div>
-            <hr>
+			<div class="ganre">
+				<a href="{{this.url}}">{{this.title}}</a>
+				<div>
+					{{#each this.subGanres }}<a href="ganre/{{@key}}">{{this}}</a>{{/each}}
+				</div>
+			</div>
+
 		{{/each}}
 	</div>
 

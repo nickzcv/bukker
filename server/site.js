@@ -72,12 +72,30 @@ router.get('/books', function(req, res) {
 	});
 });
 
+router.get('/ganre/:url', function(req, res, next) {
+	var db = req.db,
+		url = String(req.params.url),
+		books = db.get('books');
+	 
+		console.log(url);
+
+	books.find({
+		 "ganres": /.*url.*/i 
+	}, function (err, book) {
+		if (err) res.json(err);
+		if (book) {
+			console.log(book);
+		} else {
+			next();
+		}
+	});
+});
 /* Ganres page */
 router.get('/ganres', function (req, res) {
 	var db = req.db,
-		books = db.get('ganres');
+		ganres = db.get('ganres');
 
-	books.find({},{},function(err, ganres){
+	ganres.find({},{},function(err, ganres){
 		if (err) throw err;
 		res.render('ganres', res.locals.template_data = {
 			layout: 'main',

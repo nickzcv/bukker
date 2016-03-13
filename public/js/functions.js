@@ -14,9 +14,13 @@ $( document ).ready(function() {
 	$(".cover").on('click', function(){
 		$(".cover").removeClass("active");
 		$(this).toggleClass("active");
-
 	});
 
+
+	$(".ganre > a").on('click', function(e){
+		e.preventDefault();
+		$(this).parent().toggleClass("active");
+	});
 
 
 	//rating UI part
