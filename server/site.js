@@ -63,7 +63,7 @@ router.get('/books', function(req, res) {
 
 	books.find( {} ,{},function(err, books){
 		if (err) throw err;
-		res.render('home', res.locals.template_data = {
+		res.render('books', res.locals.template_data = {
 			layout: 'main',
 			meta_title: 'Буккер',
 			book: books
