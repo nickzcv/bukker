@@ -71,13 +71,11 @@ router.get('/books', function(req, res) {
 		//res.json(books);
 	});
 });
-
+/* Ganre books */
 router.get('/ganre/:url', function(req, res, next) {
 	var db = req.db,
 		url = String(req.params.url),
 		books = db.get('books');
-	 
-		console.log(url);
 
 	books.find({
 		 "ganres.url": url
@@ -86,7 +84,7 @@ router.get('/ganre/:url', function(req, res, next) {
 		if (books) {
 			res.render('ganre', res.locals.template_data = {
 				layout: 'main',
-				meta_title: url,
+				meta_title: "",
 				books: books
 			});
 		} else {
@@ -94,7 +92,7 @@ router.get('/ganre/:url', function(req, res, next) {
 		}
 	});
 });
-/* Ganres page */
+/* all Ganres  */
 router.get('/ganres', function (req, res) {
 	var db = req.db,
 		ganres = db.get('ganres');
@@ -109,12 +107,24 @@ router.get('/ganres', function (req, res) {
 		//console.log(ganres);
 	});
 });
-
-/* Tags page */
-router.get('/tags', function (req, res) {
-	res.render('tags', res.locals.template_data = {
-		layout: 'main',
-		meta_title: 'Тэги'
+/* Tag books */
+router.get('/tag/:url', function(req, res, next) {
+	var db = req.db,
+		url = String(req.params.url),
+		books = db.get('books');
+	books.find({
+		"tags.url": url
+	}, function (err, books) {
+		if (err) throw err;
+		if (books) {
+			res.render('tag', res.locals.template_data = {
+				layout: 'main',
+				meta_title: "",
+				books: books
+			});
+		} else {
+			next();
+		}
 	});
 });
 
