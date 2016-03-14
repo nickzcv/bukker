@@ -16,7 +16,7 @@
 			<a href="/book/{{url}}" class="title">{{title}}</a>
 			<div class="author">
 				{{#each authors}}
-					{{this}}{{#unless @last}},{{/unless}}
+					{{this.name}}{{#unless @last}},{{/unless}}
 				{{/each}}
 			</div>
 			<div class="stars">

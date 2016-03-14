@@ -80,7 +80,7 @@ router.get('/ganre/:url', function(req, res, next) {
 		console.log(url);
 
 	books.find({
-		 "ganres": /.*url.*/i 
+		 "ganres": url
 	}, function (err, book) {
 		if (err) res.json(err);
 		if (book) {

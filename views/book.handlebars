@@ -15,7 +15,7 @@
 				<i class="ion-ios-person"></i>
 				<span>
 					{{#each book.authors}}
-						<a href="{{main-root}}author/{{@key}}">{{this}}</a>{{#unless @last}},{{/unless}}
+						<span>{{this.name}}</span>{{#unless @last}},{{/unless}}
 					{{else}}
 						Автор не известен
 					{{/each}}
@@ -34,7 +34,7 @@
 				<i class="ion-ios-medical"></i>
 				<span>
 					{{#each book.ganres}}
-						<a href="{{main-root}}ganre/{{@key}}">{{this}}</a>{{#unless @last}},{{/unless}}
+						<a href="{{main-root}}ganre/{{this.url}}">{{this.title}}</a>{{#unless @last}},{{/unless}}
 					{{else}}
 						<a href="{{main-root}}ganres/">Все жанры</a>
 					{{/each}}
@@ -44,7 +44,7 @@
 				<i class="ion-ios-color-filter-outline"></i>
 				<span>
 					{{#each book.tags}}
-						<a href="{{main-root}}tag/{{@key}}">{{this}}</a>{{#unless @last}},{{/unless}}
+						<a href="{{main-root}}tag/{{this.url}}">{{this.title}}</a>{{#unless @last}},{{/unless}}
 					{{else}}
 						<a href="{{main-root}}tags/">Все тэги</a>
 					{{/each}}

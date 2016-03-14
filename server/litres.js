@@ -71,30 +71,37 @@ router.post('/litres', function (req, res) {
 
 			book.year = $('#main-div dd[itemprop=datePublished]').text();
 
-			//authors get all
-			var authors = {};
+			var obj={}; //temp object
+			//authors get
+			var authors = [];
 			$('#main-div .book-author a').each(function(i, elem) {
-				var author_slug = getSlug( $(this).text() );
-				authors[author_slug] = $(this).text();
+				obj.name = $(this).text();
+				obj.url = getSlug( $(this).text() );
+				authors.push(obj);
+				obj={};
 			});
 			book.authors = authors;
 
-			//ganres get all
-			var ganres = {};
+			//ganres get
+			var ganres = [];
 			$('#main-div dd a[itemprop=genre]').each(function(i, elem) {
-				var ganre_slug = getSlug( $(this).text() );
-				ganres[ganre_slug] = $(this).text();
+				obj.title = $(this).text();
+				obj.url = getSlug( $(this).text() );
+				ganres.push(obj);
+				obj={};
 			});
 			book.ganres = ganres;
 
 			//tags get all
-			var tags = {};
+			var tags = [];
 			$('#main-div dl dt').each(function(i, elem) {
 				if( $(this).text() == "Теги:" ){
 					var tagElement = $(this).next().children();
 					$(tagElement).each(function(i, elem) {
-						tag_slug = getSlug( $(this).text() );
-						tags[tag_slug] = $(this).text();
+						obj.title = $(this).text();
+						obj.url = getSlug( $(this).text() );
+						tags.push(obj);
+						obj={};
 					});
 				}
 			});
