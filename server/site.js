@@ -75,8 +75,23 @@ router.get('/books', function(req, res) {
 router.get('/ganre/:url', function(req, res, next) {
 	var db = req.db,
 		url = String(req.params.url),
+		ganreTitle = "",
 		books = db.get('books');
 
+	//get ganre title
+	books.findOne({
+		"ganres.url": url
+	}, function (err, book) {
+		if (err) throw err;
+		if (book) {
+			for (i = 0; i < book.ganres.length; i++) {
+				if( book.ganres[i].url == url){
+					ganreTitle = book.ganres[i].title;
+				}
+			}
+		}
+	});
+	//get books by ganre
 	books.find({
 		 "ganres.url": url
 	}, function (err, books) {
@@ -84,7 +99,7 @@ router.get('/ganre/:url', function(req, res, next) {
 		if (books) {
 			res.render('ganre', res.locals.template_data = {
 				layout: 'main',
-				meta_title: "",
+				meta_title: ganreTitle,
 				books: books
 			});
 		} else {
@@ -111,7 +126,22 @@ router.get('/ganres', function (req, res) {
 router.get('/tag/:url', function(req, res, next) {
 	var db = req.db,
 		url = String(req.params.url),
+		tagTitle = "",
 		books = db.get('books');
+	//get tag title
+	books.findOne({
+		"tags.url": url
+	}, function (err, book) {
+		if (err) throw err;
+		if (book) {
+			for (i = 0; i < book.tags.length; i++) {
+				if( book.tags[i].url == url){
+					tagTitle = book.tags[i].title;
+				}
+			}
+		}
+	});
+	//get books by tag
 	books.find({
 		"tags.url": url
 	}, function (err, books) {
@@ -119,7 +149,7 @@ router.get('/tag/:url', function(req, res, next) {
 		if (books) {
 			res.render('tag', res.locals.template_data = {
 				layout: 'main',
-				meta_title: "",
+				meta_title: tagTitle,
 				books: books
 			});
 		} else {
