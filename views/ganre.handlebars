@@ -1,0 +1,47 @@
+<div class="main">
+
+	<div class="pageHeader">
+		<h1>{{meta_title}}</h1>
+		<div class="sorting">
+
+		</div>
+	</div>
+	<div class="book-list">
+		{{#each books}}
+		<div class="book">
+			<div class="cover">
+				<div class="overlay"></div>
+				<img src="{{main-root}}covers/{{cover}}" title="{{title}}">
+			</div>
+			<a href="/book/{{url}}" class="title">{{title}}</a>
+			<div class="author">
+				{{#each authors}}
+					{{this.name}}{{#unless @last}},{{/unless}}
+				{{/each}}
+			</div>
+			<div class="stars">
+				{{#each ratings}}
+					{{#if @first}}
+					<div class="ratingBox">
+						{{#each this}}
+							<meta {{@key}}="{{this}}">
+						{{/each}}
+					</div>
+					{{/if}}
+				{{else}}
+					<div class="ratingBoxEmpty">
+						<i class="ion-android-star-outline"></i>
+						<i class="ion-android-star-outline"></i>
+						<i class="ion-android-star-outline"></i>
+						<i class="ion-android-star-outline"></i>
+						<i class="ion-android-star-outline"></i>
+					</div>
+				{{/each}}
+			</div>
+		</div>
+        {{else}}
+            Извините, но книги в этом жанре еще не добавлены в Буккер.
+		{{/each}}
+	</div>
+
+</div>

@@ -80,11 +80,15 @@ router.get('/ganre/:url', function(req, res, next) {
 		console.log(url);
 
 	books.find({
-		 "ganres": url
-	}, function (err, book) {
-		if (err) res.json(err);
-		if (book) {
-			console.log(book);
+		 "ganres.url": url
+	}, function (err, books) {
+		if (err) throw err;
+		if (books) {
+			res.render('ganre', res.locals.template_data = {
+				layout: 'main',
+				meta_title: url,
+				books: books
+			});
 		} else {
 			next();
 		}
