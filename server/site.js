@@ -115,7 +115,11 @@ router.get('/ganres', function (req, res) {
 	var db = req.db,
 		ganres = db.get('ganres');
 
-	ganres.find({},{},function(err, ganres){
+	var options = {
+		"sort": {title : 1}
+	};
+
+	ganres.find({},options,function(err, ganres){
 		if (err) throw err;
 		res.render('ganres', res.locals.template_data = {
 			layout: 'main',
