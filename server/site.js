@@ -89,23 +89,26 @@ router.get('/ganre/:url', function(req, res, next) {
 					ganreTitle = book.ganres[i].title;
 				}
 			}
-		}
-	});
-	//get books by ganre
-	books.find({
-		 "ganres.url": url
-	}, function (err, books) {
-		if (err) throw err;
-		if (books) {
-			res.render('ganre', res.locals.template_data = {
-				layout: 'main',
-				meta_title: ganreTitle,
-				books: books
-			});
+			//get books by ganre
+			books.find({
+				"ganres.url": url
+			}, function (err, books) {
+				if (err) throw err;
+				if (books) {
+					res.render('ganre', res.locals.template_data = {
+						layout: 'main',
+						meta_title: ganreTitle,
+						books: books
+					});
+				} else {
+					next();
+				}
+			});//end get books by ganre
 		} else {
 			next();
 		}
 	});
+
 });
 /* all Ganres  */
 router.get('/ganres', function (req, res) {
@@ -139,23 +142,26 @@ router.get('/tag/:url', function(req, res, next) {
 					tagTitle = book.tags[i].title;
 				}
 			}
-		}
-	});
-	//get books by tag
-	books.find({
-		"tags.url": url
-	}, function (err, books) {
-		if (err) throw err;
-		if (books) {
-			res.render('tag', res.locals.template_data = {
-				layout: 'main',
-				meta_title: tagTitle,
-				books: books
-			});
+			//get books by tag
+			books.find({
+				"tags.url": url
+			}, function (err, books) {
+				if (err) throw err;
+				if (books) {
+					res.render('tag', res.locals.template_data = {
+						layout: 'main',
+						meta_title: tagTitle,
+						books: books
+					});
+				} else {
+					next();
+				}
+			});//end get books by tag
 		} else {
 			next();
 		}
 	});
+
 });
 
 /* ADD BOOK page */

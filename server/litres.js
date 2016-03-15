@@ -18,7 +18,7 @@ router.get('/litres', function (req, res) {
 		return req.app.locals.unauthorized(res);
 
 	res.render('litres', res.locals.template_data = {
-		layout: 'main',
+		layout: 'admin',
 		meta_title: 'Добавление книги из Litres'
 	});
 });
@@ -159,8 +159,8 @@ router.post('/litres', function (req, res) {
 								res.redirect('/');
 							} else {
 								download(cover, 'covers/'+newName, function(){
-									res.location('/');
-									res.redirect('/');
+									res.location('/admin');
+									res.redirect('/admin');
 								});
 							}
 						}

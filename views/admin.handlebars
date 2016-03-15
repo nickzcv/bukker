@@ -1,45 +1,36 @@
 <div class="main">
 
-	<div class="pageHeader">
-		<h1>Главная</h1>
-		<div class="sorting">
-
-		</div>
+	<div class="pageHeaderInner">
+		<h1>Администратор сайта</h1>
 	</div>
-	<div class="book-list">
-		{{#each book}}
-		<div class="book">
-			<div class="cover">
-				<div class="overlay"></div>
-				<img src="covers/{{cover}}" title="{{title}}">
-			</div>
-			<a href="/book/{{url}}" class="title">{{title}}</a>
-			<div class="author">
-				{{#each authors}}
-					{{this.name}}{{#unless @last}},{{/unless}}
-				{{/each}}
-			</div>
-			<div class="stars">
-				{{#each ratings}}
-					{{#if @first}}
-					<div class="ratingBox">
-						{{#each this}}
-							<meta {{@key}}="{{this}}">
-						{{/each}}
-					</div>
-					{{/if}}
-				{{else}}
-					<div class="ratingBoxEmpty">
-						<i class="ion-android-star-outline"></i>
-						<i class="ion-android-star-outline"></i>
-						<i class="ion-android-star-outline"></i>
-						<i class="ion-android-star-outline"></i>
-						<i class="ion-android-star-outline"></i>
-					</div>
-				{{/each}}
-			</div>
-		</div>
-		{{/each}}
+	<div class="admin-page">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Книга</th>
+                <th>Автор</th>
+                <th>год</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+        {{#each book}}
+            <tr>
+                <th scope="row">{{@index}}</th>
+                <td>{{title}}</td>
+                <td>
+                    {{#each authors}}
+                        {{this.name}}{{#unless @last}},{{/unless}}
+                    {{/each}}
+                </td>
+                <td>{{this.year}}</td>
+                <td>edit/viev</td>
+            </tr>
+        {{/each}}
+            </tbody>
+        </table>
+
 	</div>
 
 </div>
