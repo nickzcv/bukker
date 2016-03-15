@@ -14,7 +14,7 @@ router.get('/litres', function (req, res) {
 	if (!user || !user.name || !user.pass)
 		return req.app.locals.unauthorized(res);
 
-	if (user.name != 'nick' && user.pass != 'nick')
+	if (user.name != 'nick' && user.pass != '5687004a')
 		return req.app.locals.unauthorized(res);
 
 	res.render('litres', res.locals.template_data = {

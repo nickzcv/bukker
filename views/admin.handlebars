@@ -1,0 +1,45 @@
+<div class="main">
+
+	<div class="pageHeader">
+		<h1>Главная</h1>
+		<div class="sorting">
+
+		</div>
+	</div>
+	<div class="book-list">
+		{{#each book}}
+		<div class="book">
+			<div class="cover">
+				<div class="overlay"></div>
+				<img src="covers/{{cover}}" title="{{title}}">
+			</div>
+			<a href="/book/{{url}}" class="title">{{title}}</a>
+			<div class="author">
+				{{#each authors}}
+					{{this.name}}{{#unless @last}},{{/unless}}
+				{{/each}}
+			</div>
+			<div class="stars">
+				{{#each ratings}}
+					{{#if @first}}
+					<div class="ratingBox">
+						{{#each this}}
+							<meta {{@key}}="{{this}}">
+						{{/each}}
+					</div>
+					{{/if}}
+				{{else}}
+					<div class="ratingBoxEmpty">
+						<i class="ion-android-star-outline"></i>
+						<i class="ion-android-star-outline"></i>
+						<i class="ion-android-star-outline"></i>
+						<i class="ion-android-star-outline"></i>
+						<i class="ion-android-star-outline"></i>
+					</div>
+				{{/each}}
+			</div>
+		</div>
+		{{/each}}
+	</div>
+
+</div>
