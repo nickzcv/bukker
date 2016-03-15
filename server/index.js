@@ -65,8 +65,14 @@ app.engine('handlebars', exphbs({
 			if (typeof(date) == "undefined") {
 				return "2016";
 			}
-			// These methods need to return a String
 			return date.getFullYear();
+		},
+		'formatDateAndTime': function (date) {
+			if (typeof(date) == "undefined") {
+				return " - ";
+			}
+			// These methods need to return a String
+			return date.toLocaleString();
 		},
 		'static-root': function (data) {
 			return '/static';

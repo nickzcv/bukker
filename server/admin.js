@@ -13,12 +13,11 @@ router.get('/admin', function (req, res) {
 	if (user.name != 'nick' && user.pass != '5687004a')
 		return req.app.locals.unauthorized(res);
 
-
 	var db = req.db,
 		books = db.get('books');
 
 	var options = {
-		"limit": 20,
+		"limit": 30,
 		"skip": 0,
 		"sort": {date : -1}
 	};
@@ -27,7 +26,8 @@ router.get('/admin', function (req, res) {
 		if (err) throw err;
 		res.render('admin', res.locals.template_data = {
 			layout: 'admin',
-			meta_title: 'Admin page',
+			meta_title: 'Admin Books ('+books.length+')',
+			count: books.length,
 			book: books
 		});
 		//res.json(books);
