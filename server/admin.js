@@ -14,24 +14,55 @@ router.get('/admin', function (req, res) {
 		return req.app.locals.unauthorized(res);
 
 	var db = req.db,
-		books = db.get('books');
+		books = db.get('books'),
+		limit = 10,
+		sort = {date : -1},
+		totalBooks = 0,
+		pageCount = 1;
 
-	var options = {
-		"limit": 30,
-		"skip": 0,
-		"sort": {date : -1}
-	};
 
-	books.find({},options,function(err, books){
+	//try to get page N
+	var page =  req.query.page;
+	if(!page){
+		page = 1;
+	}
+
+	books.find({},{},function(err, allBooks){
 		if (err) throw err;
-		res.render('admin', res.locals.template_data = {
-			layout: 'admin',
-			meta_title: 'Admin Books ('+books.length+')',
-			count: books.length,
-			book: books
-		});
-		//res.json(books);
+		if (allBooks) {
+			totalBooks = allBooks.length;
+			pageCount = Math.ceil(totalBooks / limit);
+
+			var options = {
+				"limit": limit,
+				"skip": limit*(page-1),
+				"sort": sort
+			};
+
+			console.log( options.limit );
+			console.log( options.skip );
+
+			books.find({},options,function(err, books){
+				if (err) throw err;
+				res.render('admin', res.locals.template_data = {
+					layout: 'admin',
+					meta_title: 'Admin Books ('+totalBooks+')',
+					pagination: {
+						page: page,
+						pageCount: pageCount
+					},
+					book: books
+				});
+				//res.json(books);
+			});
+
+		} else {
+			console.log("error")
+		}
 	});
+
+
+
 });
 
 module.exports = router;

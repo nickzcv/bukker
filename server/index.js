@@ -5,6 +5,7 @@
 	app = express(),
 	basic_auth = require('basic-auth'),
 	mongo = require('mongodb'),
+	paginate = require('handlebars-paginate'),
 	monk = require('monk'),
 	db = monk('localhost:27017/bukker');
 
@@ -72,14 +73,15 @@ app.engine('handlebars', exphbs({
 				return " - ";
 			}
 			// These methods need to return a String
-			return date.toLocaleString();
+			return date.toGMTString();
 		},
 		'static-root': function (data) {
 			return '/static';
 		},
 		'main-root': function (data) {
 			return '/';
-		}
+		},
+		'paginate': paginate
 	}
 }));
 
