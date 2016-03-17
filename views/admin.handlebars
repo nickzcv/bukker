@@ -3,58 +3,10 @@
 	<div class="pageHeaderInner">
 		<h1>{{meta_title}}</h1>
 	</div>
-	<div class="admin-page">
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Книга</th>
-                <th>Автор</th>
-                <th style="padding:0 10px">год</th>
-                <th>добавлена</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-        {{#each book}}
-            <tr>
-                <th scope="row"></th>
-                <td><a target="_blank" href="/book/{{this.url}}" class="title">{{this.title}}</a></td>
-                <td style="font-size:15px">
-                    {{#each authors}}
-                        {{this.name}}{{#unless @last}},{{/unless}}
-                    {{/each}}
-                </td>
-                <td style="padding:0 10px; font-size:15px">{{this.year}}</td>
-                <td style="font-size:14px; text-wrap:avoid; color:#666">{{formatDateAndTime this.date}}</td>
-                <td>
-                    <a href=""><i style="font-size:20px" class="ion-compose"></i></a>
-                </td>
-            </tr>
-        {{/each}}
-            </tbody>
-        </table>
+	<div class="admin-page" style="margin: 0 0 0 40px;">
 
-        <div>
-            <ul class="pagination pagination-centered">
-                {{#paginate pagination type="first"}}
-                    <li {{#if disabled}}class="disabled"{{/if}}><a href="?page={{n}}">First</a></li>
-                {{/paginate}}
-                {{#paginate pagination type="previous"}}
-                    <li {{#if disabled}}class="disabled"{{/if}}><a href="?page={{n}}">Prev</a></li>
-                {{/paginate}}
-                {{#paginate pagination type="middle" limit="20"}}
-                    <li {{#if active}}class="active"{{/if}}><a href="?page={{n}}">{{n}}</a></li>
-                {{/paginate}}
-                {{#paginate pagination type="next"}}
-                    <li {{#if disabled}}class="disabled"{{/if}}><a href="?page={{n}}">Next</a></li>
-                {{/paginate}}
-                {{#paginate pagination type="last"}}
-                    <li {{#if disabled}}class="disabled"{{/if}}><a href="?page={{n}}">Last</a></li>
-                {{/paginate}}
-            </ul>
-        </div>
-
+        <h4>Всего Книг: {{totalBooks}}</h4>
+        
 	</div>
 
 </div>
