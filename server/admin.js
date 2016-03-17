@@ -1,18 +1,10 @@
 ﻿var express    = require('express'),
 	router     = express.Router(),
 	fs = require('fs'),
-	basic_auth = require('basic-auth'),
 	path = require('path');
 
 /* admin page */
 router.get('/admin', function (req, res) {
-	var user = basic_auth(req);
-	if (!user || !user.name || !user.pass)
-		return req.app.locals.unauthorized(res);
-
-	if (user.name != 'nick' && user.pass != '5687004a')
-		return req.app.locals.unauthorized(res);
-
 	var db = req.db,
 		books = db.get('books'),
 		limit = 10,
@@ -39,9 +31,6 @@ router.get('/admin', function (req, res) {
 				"sort": sort
 			};
 
-			console.log( options.limit );
-			console.log( options.skip );
-
 			books.find({},options,function(err, books){
 				if (err) throw err;
 				res.render('admin', res.locals.template_data = {
@@ -53,7 +42,6 @@ router.get('/admin', function (req, res) {
 					},
 					book: books
 				});
-				//res.json(books);
 			});
 
 		} else {

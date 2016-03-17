@@ -26,13 +26,9 @@ app.locals.unauthorized = function (res) {
 	res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
 	return res.sendStatus(401);
 };
-/*
-app.use(function (req, res, next)  {
-	if (req.hostname === 'localhost')
-		return next();
 
+var auth = function (req, res, next) {
 	var user = basic_auth(req);
-
 	if (!user || !user.name || !user.pass)
 		return req.app.locals.unauthorized(res);
 
@@ -40,8 +36,9 @@ app.use(function (req, res, next)  {
 		return next();
 
 	return req.app.locals.unauthorized(res);
-});
-*/
+};
+app.use("/admin/*", auth);
+app.use("/admin", auth);
 
 // Serve static files.
 app.use('/static', express.static('public'));

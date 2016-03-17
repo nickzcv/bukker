@@ -16,6 +16,7 @@
 		})
 	});
 
+
 /* Home page. */
 router.get('/', function(req, res) {
 	var db = req.db,
