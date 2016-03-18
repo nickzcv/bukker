@@ -93,6 +93,7 @@ app.use(function (req, res, next) {
 
 // Display main site.
 app.use(require('./site.js'));
+app.use(require('./news.js'));
 app.use(require('./litres.js'));
 //app.use(require('./litres-ganres.js'));
 app.use(require('./admin.js'));

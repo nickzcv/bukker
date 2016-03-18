@@ -46,6 +46,7 @@ router.get('/book/:url', function(req, res, next) {
 		if (book) {
 			 res.render('book', res.locals.template_data = {
 				 layout: 'main',
+				 active: { books: true },
 				 meta_title: book.title,
 				 litres_ref_id: '156223639',
 				 book: book
@@ -66,7 +67,8 @@ router.get('/books', function(req, res) {
 		if (err) throw err;
 		res.render('books', res.locals.template_data = {
 			layout: 'main',
-			meta_title: 'Буккер',
+			active: { books: true },
+			meta_title: 'Книги',
 			book: books
 		});
 		//res.json(books);
@@ -98,6 +100,7 @@ router.get('/ganre/:url', function(req, res, next) {
 				if (books) {
 					res.render('ganre', res.locals.template_data = {
 						layout: 'main',
+						active: { ganres: true },
 						meta_title: ganreTitle,
 						books: books
 					});
@@ -125,6 +128,7 @@ router.get('/ganres', function (req, res) {
 		res.render('ganres', res.locals.template_data = {
 			layout: 'main',
 			meta_title: 'Жанры',
+			active: { ganres: true },
 			ganre: ganres
 		});
 		//console.log(ganres);

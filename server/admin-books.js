@@ -38,6 +38,7 @@ router.get('/admin/books', function (req, res) {
 				if (err) throw err;
 				res.render('admin-books', res.locals.template_data = {
 					layout: 'admin',
+					active: { books: true },
 					meta_title: 'Книги ('+totalBooks+'шт.)',
 					pagination: {
 						page: page,
