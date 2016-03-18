@@ -1,0 +1,47 @@
+﻿<div class="main">
+
+	<div class="pageHeaderInner">
+		<h1>Добавление книги</h1>
+	</div>
+
+	<div class="addBookForm">
+		<form action="addbook" method="post" enctype="multipart/form-data">
+			<div class="form-group">
+				<input type="text" id="titleBook" class="form-control" name="title">
+				<label for="titleBook">Название</label>
+			</div>
+			<div class="form-group">
+				<textarea class="form-control" id="descriptionBook" name="description" rows="4"></textarea>
+				<label for="descriptionBook">Содержание</label>
+			</div>
+			<div class="form-group">
+				<input type="text" id="yearBook" class="form-control" name="year" maxlength="4">
+				<label for="yearBook">год</label>
+			</div>
+			<div class="form-group">
+				<input type="text" id="authorBook" class="form-control" name="authors">
+				<label for="authorBook">Автор</label>
+			</div>
+			<div class="form-group">
+				<input type="text" id="ganreBook" class="form-control" name="ganres">
+				<label for="ganreBook">Жанр</label>
+			</div>
+			<div class="form-group">
+				<input type="text" id="tagsBook" class="form-control" name="tags">
+				<label for="tagsBook">Метки</label>
+			</div>
+			<div class="form-group">
+				<input type="text" id="litresid" class="form-control" name="litresid">
+				<label for="litresid">litres Book Id</label>
+			</div>
+			<div class="form-group fileinput">
+				<label for="coverBook">
+					<img src="http://goo.gl/pB9rpQ"/>
+				</label>
+				<input type="file" id="coverBook" name="cover" >
+			</div>
+			<button type="submit" class="btn btn-default" >Добавить</button>
+		</form>
+	</div>
+
+</div>

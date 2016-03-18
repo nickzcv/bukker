@@ -4,20 +4,12 @@
 	request = require('request'),
 	bodyparser = require('body-parser'),
 	fs = require('fs'),
-	basic_auth = require('basic-auth'),
 	path = require('path'),
 	cheerio = require('cheerio');
 
 /* litres page */
-router.get('/litres', function (req, res) {
-	var user = basic_auth(req);
-	if (!user || !user.name || !user.pass)
-		return req.app.locals.unauthorized(res);
-
-	if (user.name != 'nick' && user.pass != '5687004a')
-		return req.app.locals.unauthorized(res);
-
-	res.render('litres', res.locals.template_data = {
+router.get('/admin/litres', function (req, res) {
+	res.render('admin-litres', res.locals.template_data = {
 		layout: 'admin',
 		meta_title: 'Добавление книги из Litres'
 	});
@@ -29,7 +21,7 @@ router.use(bodyparser.urlencoded({
 }));
 
 // litres URL parser
-router.post('/litres', function (req, res) {
+router.post('/admin/litres', function (req, res) {
 	var db = req.db,
 		books = db.get('books');
 
@@ -155,12 +147,12 @@ router.post('/litres', function (req, res) {
 							res.redirect(req.get('referer')+'#eroor');
 						} else {
 							if( newName == "default.png" ){
-								res.location('/');
-								res.redirect('/');
+								res.location('/admin/books');
+								res.redirect('/admin/books');
 							} else {
 								download(cover, 'covers/'+newName, function(){
-									res.location('/admin');
-									res.redirect('/admin');
+									res.location('/admin/books');
+									res.redirect('/admin/books');
 								});
 							}
 						}

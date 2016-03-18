@@ -3,7 +3,7 @@
 	fs = require('fs'),
 	path = require('path');
 
-/* admin page */
+/* news page */
 router.get('/news', function (req, res) {
 
 	res.render('news', res.locals.template_data = {

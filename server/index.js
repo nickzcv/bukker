@@ -94,10 +94,11 @@ app.use(function (req, res, next) {
 // Display main site.
 app.use(require('./site.js'));
 app.use(require('./news.js'));
-app.use(require('./litres.js'));
+app.use(require('./admin-litres.js'));
 //app.use(require('./litres-ganres.js'));
 app.use(require('./admin.js'));
 app.use(require('./admin-books.js'));
+app.use(require('./admin-news.js'));
 
 
 // Handle 500 (internal server erorr).
