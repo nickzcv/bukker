@@ -17,7 +17,7 @@ router.get('/admin', function (req, res) {
 
 			res.render('admin', res.locals.template_data = {
 				layout: 'admin',
-				meta_title: 'Пиревет, Насяльника!',
+				meta_title: 'Админка - главная страница',
 				totalBooks: totalBooks
 			});
 
