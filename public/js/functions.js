@@ -9,13 +9,13 @@ $( document ).ready(function() {
 
 (function ($) {
 	'use strict';
-
+	/*
 	//cover overlay toggle
 	$(".cover").on('click', function(){
 		$(".cover").removeClass("active");
 		$(this).toggleClass("active");
 	});
-
+	*/
 
 	$(".ganre > a").on('click', function(e){
 		e.preventDefault();

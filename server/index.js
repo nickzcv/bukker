@@ -44,6 +44,7 @@ app.use("/admin", auth);
 app.use('/static', express.static('public'));
 app.use('/static/css', express.static('css'));
 app.use('/covers', express.static('covers'));
+app.use('/news', express.static('news'));
 app.use('/static/bower_components', express.static('bower_components'));
 
 // Log every request.

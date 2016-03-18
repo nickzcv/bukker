@@ -11,8 +11,8 @@
 		{{#each book}}
 		<div class="book">
 			<div class="cover">
-				<div class="overlay"></div>
-				<img src="covers/{{cover}}" title="{{title}}">
+				<!--<div class="overlay"></div>-->
+                <a href="/book/{{url}}"><img src="/covers/{{cover}}" title="{{title}}"></a>
 			</div>
 			<a href="/book/{{url}}" class="title">{{title}}</a>
 			<div class="author">

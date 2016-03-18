@@ -20,11 +20,52 @@
 
 /* admin page */
 router.get('/admin/news', function (req, res) {
+	var db = req.db,
+		news = db.get('news'),
+		limit = 10, //books per page
+		totalNews = 0,
+		pageCount = 1;
 
-	res.render('admin-news', res.locals.template_data = {
-		layout: 'admin',
-		active: { news: true },
-		meta_title: 'Новости'
+	//try to get page N
+	var page =  req.query.page;
+	if(!page){
+		page = 1;
+	}
+	//get sort param
+	var sort =  req.query.sort;
+	if(!sort){
+		sort = {date : -1}
+	}
+
+	news.find({},{},function(err, allNews){
+		if (err) throw err;
+		if (allNews) {
+			totalNews = allNews.length;
+			pageCount = Math.ceil(totalNews / limit);
+
+			var options = {
+				"limit": limit,
+				"skip": limit*(page-1),
+				"sort": sort
+			};
+
+			news.find({},options,function(err, news){
+				if (err) throw err;
+				res.render('admin-news', res.locals.template_data = {
+					layout: 'admin',
+					active: { news: true },
+					meta_title: 'Новости ('+totalNews+'шт.)',
+					pagination: {
+						page: page,
+						pageCount: pageCount
+					},
+					news: news
+				});
+			});
+
+		} else {
+			console.log("error")
+		}
 	});
 
 });

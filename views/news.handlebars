@@ -4,8 +4,18 @@
         <i class="ion-ios-color-filter-outline"></i>
 		<h1>{{meta_title}}</h1>
 	</div>
-	<div class="news">
-        {{active.news}}
+
+	<div class="news-list">
+        {{#each news}}
+            <div class="news">
+                <div class="cover">
+                    <!--<div class="overlay"></div>-->
+                    <a href="/news/{{url}}"><img src="/news/{{image}}" title="{{title}}"></a>
+                </div>
+                <a href="/news/{{url}}" class="title">{{title}}</a>
+
+            </div>
+        {{/each}}
 	</div>
 
 </div>
