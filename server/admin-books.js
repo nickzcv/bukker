@@ -74,7 +74,8 @@ router.get('/admin/books', function (req, res) {
 router.get('/admin/addbook', function (req, res) {
 	res.render('admin-addbook', res.locals.template_data = {
 		layout: 'admin',
-		meta_title: 'Добавление книги в Буккер'
+		active: { books: true },
+		meta_title: 'Добавление книги'
 	});
 });
 
