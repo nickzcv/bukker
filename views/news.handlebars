@@ -1,7 +1,7 @@
 <div class="main">
 
 	<div class="pageHeader">
-        <i class="ion-ios-color-filter-outline"></i>
+        <i class="ion-ios-paper-outline"></i>
 		<h1>{{meta_title}}</h1>
 	</div>
 
@@ -13,7 +13,14 @@
                     <a href="/news/{{url}}"><img src="/news/{{image}}" title="{{title}}"></a>
                 </div>
                 <a href="/news/{{url}}" class="title">{{title}}</a>
-
+                <div>
+                    {{content}}
+                </div>
+                <div>
+                    {{#each tags}}
+                        <a href="{{main-root}}news/tag/{{this.url}}">{{this.title}}</a>{{#unless @last}},{{/unless}}
+                    {{else}}
+                </div>
             </div>
         {{/each}}
 	</div>
