@@ -4,6 +4,11 @@ $( document ).ready(function() {
 		$(this).children().toggle();
 	});
 
+	$(".main .pagination .disabled a").on('click', function(e){
+		e.preventDefault();
+	});
+
+
 });
 
 
@@ -16,6 +21,7 @@ $( document ).ready(function() {
 		$(this).toggleClass("active");
 	});
 	*/
+
 
 	$(".ganre > a").on('click', function(e){
 		e.preventDefault();

@@ -3,15 +3,25 @@
 	.ganre-list{
 
 		.ganre{
-			border-top: 1px solid #202020;
+			border-top: 1px solid #ccc;
 
 
 			& > a{
 				display: block;
 				padding: 20px;
-				color: #000;
+				color: #444;
 				font-size: 18px;
 				letter-spacing: .5px;
+
+				&:after{
+					content: "+";
+					position: absolute;
+					right: 2%;
+					font-size: 30px;
+					color: #cccccc;
+					font-weight: lighter;
+					line-height: 20px;
+				}
 			}
 
 			& > div {
@@ -24,17 +34,21 @@
 				padding: 0 20px 20px;
 
 				& > a {
+					border-bottom: 2px solid #ccc;
 					display: inline-block;
-					margin: 5px 5px 0 0;
-					background: #202020;
-					padding: 5px;
-					color: #fff;
+					margin: 5px 7px;
+					background: #fff;
+					padding: 0 0 2px 0;
+					color: #3b3b3b;
 					&:hover {
-						background: orange;
+						border-bottom: 2px solid orange;
 						color: #000;
 					}
 				}
 			}
+		}
+		.ganre.active>a:after {
+			content: "-";
 		}
 
 	}

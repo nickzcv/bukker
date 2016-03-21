@@ -18,8 +18,6 @@ router.get('/', function(req, res) {
 		});
 		//res.json(books);
 	});
-	//cookie test
-	console.log("Cookies: ", req.cookies);
 });
 
 /* GET BOOK by url slug */
@@ -97,8 +95,11 @@ router.get('/books', function(req, res) {
 			console.log("error")
 		}
 	});
-
+	//cookie test
+	res.cookie('sorting', 'dateAsk2');
+	console.log("Cookies: ", req.cookies.sorting);
 });
+
 /* Ganre books */
 router.get('/ganre/:url', function(req, res, next) {
 	var db = req.db,
