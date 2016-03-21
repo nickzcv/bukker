@@ -19,7 +19,7 @@
                 <div>
                     {{#each tags}}
                         <a href="{{main-root}}news/tag/{{this.url}}">{{this.title}}</a>{{#unless @last}},{{/unless}}
-                    {{else}}
+                    {{/each}}
                 </div>
             </div>
         {{/each}}

@@ -147,12 +147,12 @@ router.post('/admin/litres', function (req, res) {
 							res.redirect(req.get('referer')+'#eroor');
 						} else {
 							if( newName == "default.png" ){
-								res.location('/admin/books');
-								res.redirect('/admin/books');
+								res.location('/admin/litres');
+								res.redirect('/admin/litres');
 							} else {
 								download(cover, 'covers/'+newName, function(){
-									res.location('/admin/books');
-									res.redirect('/admin/books');
+									res.location('/admin/litres');
+									res.redirect('/admin/litres');
 								});
 							}
 						}
