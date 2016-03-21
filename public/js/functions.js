@@ -7,7 +7,8 @@ $( document ).ready(function() {
 	$(".main .pagination .disabled a").on('click', function(e){
 		e.preventDefault();
 	});
-
+	
+	Cookies.set('sorting', 'test');
 
 });
 

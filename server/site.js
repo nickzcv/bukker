@@ -96,7 +96,7 @@ router.get('/books', function(req, res) {
 		}
 	});
 	//cookie test
-	res.cookie('sorting', 'dateAsk2');
+	//res.cookie('sorting', 'dateAsk2');
 	console.log("Cookies: ", req.cookies.sorting);
 });
 
