@@ -72,16 +72,16 @@
 					<a class="read" target="_blank" href="http://www.litres.ru/pages/quickread/?art={{book.litresid}}&action=add_art_to_basket&lfrom={{litres_ref_id}}"><i class="ion-ios-bookmarks-outline"></i>Читать онлайн</a>
 				</div>
 			{{/if}}
-
+            <div id="vk_like"></div>
 		</div>
 		<div class="description">
 			{{book.description}}
 		</div>
 	</div>
 
-    <div id="vk_comments"></div>
+
     <script type="text/javascript">
-        VK.Widgets.Comments("vk_comments", {limit: 20, width: "665", attach: "*"});
+        VK.Widgets.Like("vk_like", {type: "button"});
     </script>
 
 </div>
