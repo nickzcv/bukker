@@ -87,6 +87,7 @@ router.post('/admin/addnews', upload.single('newsImage'), function(req, res) {
 	var db = req.db,
 		news = db.get('news'),
 	//save form data
+		hot = req.body.hot || false,
 		title = req.body.title,
 		content = req.body.newsContent,
 		tags = req.body.tags.split(','),
@@ -115,6 +116,7 @@ router.post('/admin/addnews', upload.single('newsImage'), function(req, res) {
 		} else {
 			//start insert news to database
 			news.insert({
+				'hot' : hot,
 				'title' : title,
 				'content' : content,
 				'tags': arr,

@@ -1,4 +1,5 @@
 ﻿var express = require('express'),
+	cookieParser = require('cookie-parser'),
 	exphbs = require('express-handlebars'),
 	fs = require('fs'),
 	winston = require('winston'),
@@ -9,6 +10,7 @@
 	monk = require('monk'),
 	db = monk('localhost:27017/bukker');
 
+app.use(cookieParser());
 // Make our db accessible to our router
 app.use(function(req,res,next){
 	req.db = db;

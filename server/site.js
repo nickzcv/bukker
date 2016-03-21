@@ -18,6 +18,8 @@ router.get('/', function(req, res) {
 		});
 		//res.json(books);
 	});
+	//cookie test
+	console.log("Cookies: ", req.cookies);
 });
 
 /* GET BOOK by url slug */
@@ -48,18 +50,54 @@ router.get('/book/:url', function(req, res, next) {
 /* GET BOOKS list. */
 router.get('/books', function(req, res) {
 	var db = req.db,
-		books = db.get('books');
+		books = db.get('books'),
+		limit = 10, //books per page
+		totalBooks = 0,
+		pageCount = 1;
 
-	books.find( {} ,{},function(err, books){
+	//try to get page N
+	var page =  req.query.page;
+	if(!page){
+		page = 1;
+	}
+	//get sort param
+	var sort =  req.query.sort;
+	if(!sort){
+		sort = {date : -1}
+	}
+
+	books.find({},{},function(err, allBooks){
 		if (err) throw err;
-		res.render('books', res.locals.template_data = {
-			layout: 'main',
-			active: { books: true },
-			meta_title: 'Книги',
-			book: books
-		});
-		//res.json(books);
+		if (allBooks) {
+			totalBooks = allBooks.length;
+			pageCount = Math.ceil(totalBooks / limit);
+
+			var options = {
+				"limit": limit,
+				"skip": limit*(page-1),
+				"sort": sort
+			};
+
+			books.find({},options,function(err, books){
+				if (err) throw err;
+				res.render('books', res.locals.template_data = {
+					layout: 'main',
+					active: { books: true },
+					meta_title: 'Книги',
+					meta_total_books: totalBooks,
+					pagination: {
+						page: page,
+						pageCount: pageCount
+					},
+					book: books
+				});
+			});
+
+		} else {
+			console.log("error")
+		}
 	});
+
 });
 /* Ganre books */
 router.get('/ganre/:url', function(req, res, next) {

@@ -236,6 +236,13 @@
 		outline: none;
 		width: 100%;
 		height: 70px;
+
+		&#hot{
+			height: 34px;
+			margin-left: 100px;
+			width:auto;
+			color: transparent!important;
+		}
 	}
 	textarea, textarea:focus{
 		background-color: transparent;
@@ -258,5 +265,51 @@
 		transition: color 0.4s ease, background-color 0.1s ease-in-out;
 	}
 
+	.pagination {
+		margin: 0;
+
+		li{
+			a{
+				border-radius: 0;
+				color: #202020;
+				border-color: #3b3b3b;
+				padding: 10px 15px;
+				line-height: 14px;
+
+				i {
+					font-size: 22px;
+				}
+				&:focus{
+					background-color: #ccc;
+				}
+				&.pageNums{
+					display: block;
+				}
+			}
+		}
+		.active {
+			a{
+				background-color: #202020;
+				border-color: #202020;
+				color: #fff;
+			}
+		}
+		.disabled {
+			a{
+				background-color: transparent;
+				border-color: #a5a5a5;
+				color: #a5a5a5;
+			}
+		}
+
+
+	}
+
+
+	@media(max-width:500px) {
+		.pageNums{
+			display: none!important;
+		}
+	}
 
 }
