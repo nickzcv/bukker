@@ -10,7 +10,7 @@ router.get('/', function(req, res) {
 		books = db.get('books');
 
 	var options = {
-		"limit": 25,
+		"limit": 12,
 		"sort": {date : 1}
 	};
 

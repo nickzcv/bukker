@@ -95,7 +95,7 @@ router.post('/admin/addnews', upload.single('newsImage'), function(req, res) {
 		image = false,
 		arr=[],
 		obj={};
-
+console.log(tags);
 	for (var i = 0; i < tags.length; i++) {
 		obj.title = tags[i].trim();
 		obj.url = getSlug( tags[i] );

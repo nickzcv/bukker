@@ -1,0 +1,24 @@
+<div class="main">
+
+	<div class="pageHeaderInner">
+        <i class="ion-ios-paper-outline"></i>
+		<h1>{{news.title}}</h1>
+	</div>
+
+	<div class="newsPage">
+
+        <div class="cover">
+            <img src="/news/{{news.image}}" title="{{news.title}}">
+        </div>
+        <div class="content">
+            {{{news.content}}}
+        </div>
+        <div class="tags">
+            {{#each news.tags}}
+                <a href="{{main-root}}news/tag/{{this.url}}">{{this.title}}</a>
+            {{/each}}
+        </div>
+
+	</div>
+
+</div>
