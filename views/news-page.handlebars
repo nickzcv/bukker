@@ -6,16 +6,18 @@
 	</div>
 
 	<div class="newsPage">
-
         <div class="cover">
             <img src="/news/{{news.image}}" title="{{news.title}}">
         </div>
         <div class="content">
             {{{news.content}}}
         </div>
+        <div class="date">
+            {{formatNewsDate news.date}}
+        </div>
         <div class="tags">
             {{#each news.tags}}
-                <a href="{{main-root}}news/tag/{{this.url}}">{{this.title}}</a>
+                <span>{{this.title}}</span>
             {{/each}}
         </div>
 

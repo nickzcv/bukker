@@ -8,19 +8,11 @@
 	<div class="news-list">
         {{#each news}}
             <div class="news">
+                <!--
                 <div class="cover">
-                    <!--<div class="overlay"></div>-->
                     <a href="/news/{{url}}"><img src="/news/{{image}}" title="{{title}}"></a>
-                </div>
+                </div>-->
                 <a href="/news/{{url}}" class="title">{{title}}</a>
-                <div>
-                    {{{content}}}
-                </div>
-                <div>
-                    {{#each tags}}
-                        <a href="{{main-root}}news/tag/{{this.url}}">{{this.title}}</a>{{#unless @last}},{{/unless}}
-                    {{/each}}
-                </div>
             </div>
         {{/each}}
 	</div>

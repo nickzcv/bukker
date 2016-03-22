@@ -75,6 +75,13 @@ app.engine('handlebars', exphbs({
 			// These methods need to return a String
 			return date.toGMTString();
 		},
+		'formatNewsDate': function (date) {
+			if (typeof(date) == "undefined") {
+				return "";
+			}
+			// These methods need to return a String
+			return date.toDateString();
+		},
 		'static-root': function (data) {
 			return '/static';
 		},

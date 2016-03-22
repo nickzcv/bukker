@@ -47,7 +47,7 @@
 					{{#each book.tags}}
 						<a href="{{main-root}}tag/{{this.url}}">{{this.title}}</a>{{#unless @last}},{{/unless}}
 					{{else}}
-						<a href="{{main-root}}tags/">Все метки</a>
+						<span style="color: #ccc">книга не отмечена</span>
 					{{/each}}
 				</span>
 			</div>
