@@ -7,10 +7,10 @@
 	<div class="book-list">
 		{{#each books}}
 		<div class="book">
-			<div class="cover">
-				<div class="overlay"></div>
-				<img src="{{main-root}}covers/{{cover}}" title="{{title}}">
-			</div>
+            <div class="cover">
+                <!--<div class="overlay"></div>-->
+                <a href="/book/{{url}}"><img src="{{main-root}}covers/{{cover}}" title="{{title}}"></a>
+            </div>
 			<a href="/book/{{url}}" class="title">{{title}}</a>
 			<div class="author">
 				{{#each authors}}
