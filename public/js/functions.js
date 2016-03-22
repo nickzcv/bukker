@@ -7,21 +7,21 @@ $( document ).ready(function() {
 	$(".main .pagination .disabled a").on('click', function(e){
 		e.preventDefault();
 	});
-	
-	Cookies.set('sorting', 'test');
+
+	//Cookies.set('sorting', 'test');
 
 });
 
 
 (function ($) {
 	'use strict';
-	/*
-	//cover overlay toggle
-	$(".cover").on('click', function(){
-		$(".cover").removeClass("active");
-		$(this).toggleClass("active");
-	});
-	*/
+
+	if( window.location.hash === '#exist' ){
+		alert('Уже есть в базе.')
+	}
+	if( window.location.hash === '#eroor' ){
+		alert('Произошла ошибка :(')
+	}
 
 
 	$(".ganre > a").on('click', function(e){

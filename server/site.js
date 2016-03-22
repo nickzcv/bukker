@@ -9,7 +9,12 @@ router.get('/', function(req, res) {
 	var db = req.db,
 		books = db.get('books');
 
-	books.find({},{sort: {date: -1}},function(err, books){
+	var options = {
+		"limit": 25,
+		"sort": {date : 1}
+	};
+
+	books.find({},options,function(err, books){
 		if (err) throw err;
 		res.render('home', res.locals.template_data = {
 			layout: 'main',
@@ -49,7 +54,7 @@ router.get('/book/:url', function(req, res, next) {
 router.get('/books', function(req, res) {
 	var db = req.db,
 		books = db.get('books'),
-		limit = 10, //books per page
+		limit = 25, //books per page
 		totalBooks = 0,
 		pageCount = 1;
 
@@ -97,7 +102,7 @@ router.get('/books', function(req, res) {
 	});
 	//cookie test
 	//res.cookie('sorting', 'dateAsk2');
-	console.log("Cookies: ", req.cookies.sorting);
+	//console.log("Cookies: ", req.cookies.sorting);
 });
 
 /* Ganre books */
