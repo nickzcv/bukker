@@ -10,8 +10,8 @@ router.get('/', function(req, res) {
 		books = db.get('books');
 
 	var options = {
-		"limit": 12,
-		"sort": {date : 1}
+		"limit": 20,
+		"sort": {date : -1}
 	};
 
 	books.find({},options,function(err, books){
