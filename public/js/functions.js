@@ -8,6 +8,18 @@ $( document ).ready(function() {
 		e.preventDefault();
 	});
 
+	if( $("#bukker").length ){
+
+		$("#bukker .sub").on('click', function(e){
+			e.preventDefault();
+			var selected = $(".visible").removeClass("visible");
+			if ( $(selected).next().addClass("visible").length == 0 ){
+				$(selected).siblings().first().addClass("visible");
+				console.log( $(selected).next().addClass("visible").length );
+			}
+		});
+
+	}
 	//Cookies.set('sorting', 'test');
 
 });
@@ -20,7 +32,7 @@ $( document ).ready(function() {
 		alert('Уже есть в базе.')
 	}
 	if( window.location.hash === '#eroor' ){
-		alert('Произошла ошибка :(')
+		alert('Произошла ошибка.')
 	}
 
 
