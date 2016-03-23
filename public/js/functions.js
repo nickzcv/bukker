@@ -50,6 +50,19 @@ $( document ).ready(function() {
 (function ($) {
 	'use strict';
 
+	var elem = document.querySelector('.news-list');
+	var iso = new Isotope( elem, {
+		// options
+		itemSelector: '.news',
+		layoutMode: 'fitRows'
+	});
+
+// element argument can be a selector string
+//   for an individual element
+	var iso = new Isotope( '.news-list', {
+		// options
+	});
+
 	if( window.location.hash === '#exist' ){
 		alert('Уже есть в базе.')
 	}

@@ -6,6 +6,7 @@
     "Nick"
   ],
   "dependencies": {
+    "isotope": "~2.2.2",
     "jquery": "~2.1.4",
     "lesshat": "~3.0.2",
     "speakingurl": "~9.0.0",
