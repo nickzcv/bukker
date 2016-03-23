@@ -51,7 +51,7 @@ $( document ).ready(function() {
 		$grid.isotope({
 			// options...
 			itemSelector: '.news',
-			layoutMode: 'fitRows'
+			layoutMode: 'masonry'
 		});
 	});
 
