@@ -29,14 +29,6 @@ $( document ).ready(function() {
 	'use strict';
 
 
-	if( window.location.hash === '#exist' ){
-		alert('Уже есть в базе.')
-	}
-	if( window.location.hash === '#eroor' ){
-		alert('Произошла ошибка.')
-	}
-
-
 	$(".ganre > a").on('click', function(e){
 		e.preventDefault();
 		$(this).parent().toggleClass("active");

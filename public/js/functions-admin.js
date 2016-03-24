@@ -25,3 +25,17 @@ $( document ).ready(function() {
 
 
 });
+
+(function ($) {
+	'use strict';
+
+
+	if( window.location.hash === '#exist' ){
+		alert('Уже есть в базе.')
+	}
+	if( window.location.hash === '#eroor' ){
+		alert('Произошла ошибка.')
+	}
+
+
+}($));
