@@ -31,6 +31,7 @@ router.get('/', function(req, res) {
 router.get('/contacts', function(req, res) {
 	res.render('contacts', res.locals.template_data = {
 		layout: 'main',
+		active: { contacts: true },
 		meta_title: 'Буккер - страница обратной связи'
 	});
 });
@@ -39,6 +40,7 @@ router.get('/contacts', function(req, res) {
 router.get('/info', function(req, res) {
 	res.render('info', res.locals.template_data = {
 		layout: 'main',
+		active: { info: true },
 		meta_title: 'Буккер - информация о сайте'
 	});
 });
