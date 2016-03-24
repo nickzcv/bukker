@@ -27,6 +27,22 @@ router.get('/', function(req, res) {
 	});
 });
 
+/* contacts page. */
+router.get('/contacts', function(req, res) {
+	res.render('contacts', res.locals.template_data = {
+		layout: 'main',
+		meta_title: 'Буккер - страница обратной связи'
+	});
+});
+
+/* info page. */
+router.get('/info', function(req, res) {
+	res.render('info', res.locals.template_data = {
+		layout: 'main',
+		meta_title: 'Буккер - информация о сайте'
+	});
+});
+
 /* GET BOOK by url slug */
 router.get('/book/:url', function(req, res, next) {
 	var db = req.db,
