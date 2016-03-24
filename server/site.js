@@ -7,21 +7,23 @@
 /* Home page. */
 router.get('/', function(req, res) {
 	var db = req.db,
-		books = db.get('books');
+		books = db.get('books'),
+		news = db.get('news');
 
-	var options = {
-		"limit": 20,
-		"sort": {date : -1}
-	};
-
-	books.find({},options,function(err, books){
+	books.find({},{limit: 20, sort: {date: -1}},function(err, books){
 		if (err) throw err;
-		res.render('home', res.locals.template_data = {
-			layout: 'main',
-			meta_title: 'Буккер - рейтинги книг',
-			book: books
-		});
-		//res.json(books);
+		if (books) {
+			news.find({},{limit: 3, sort: {date: -1}},function(err, news){
+				if (err) throw err;
+				res.render('home', res.locals.template_data = {
+					layout: 'main',
+					meta_title: 'Буккер - рейтинги книг',
+					book: books,
+					news: news
+				});
+			});
+		}
+
 	});
 });
 
