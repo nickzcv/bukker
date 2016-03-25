@@ -43,7 +43,7 @@ $( document ).ready(function() {
 			$starEmpty = '<i class="ion-android-star-outline"></i>';
 
 		//find generated meta tags
-		var	title = $("meta[name='ratingCount']").attr('content'),
+		var	title = $("meta[name='ratingTitle']").attr('content'),
 			scale = $("meta[name='ratingScale']").attr('content'),
 			value = $("meta[name='ratingValue']").attr('content'),
 			count = $("meta[name='ratingCount']").attr('content');
