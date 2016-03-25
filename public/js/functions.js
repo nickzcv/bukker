@@ -43,10 +43,10 @@ $( document ).ready(function() {
 			$starEmpty = '<i class="ion-android-star-outline"></i>';
 
 		//find generated meta tags
-		var	title = $(this).children().attr("ratingtitle"),
-			scale = $(this).children().next().attr("ratingscale"),
-			value = $(this).children().next().next().attr("ratingvalue"),
-			count = $(this).children().next().next().next().attr("ratingcount");
+		var	title = $("meta[name='ratingCount']").attr('content'),
+			scale = $("meta[name='ratingScale']").attr('content'),
+			value = $("meta[name='ratingValue']").attr('content'),
+			count = $("meta[name='ratingCount']").attr('content');
 
 		if(!title || title == "") {
 			return $(this).html($emptyStars);
@@ -57,7 +57,7 @@ $( document ).ready(function() {
 		}
 		// 5 - rate scale
 		if(scale == 5){
-			var TotalCount = parseInt(count);// console.log( TotalCount ); // всего голосов
+			var TotalCount = parseInt(count); //console.log( TotalCount ); // всего голосов
 			var decimial = parseFloat(value) - parseInt(value); //console.log( decimial ); // остаток
 			var fullStars = parseInt(value); //console.log( fullStars ); // целая часть
 			var $dom = "";
