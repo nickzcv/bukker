@@ -22,7 +22,7 @@
 router.get('/admin/news', function (req, res) {
 	var db = req.db,
 		news = db.get('news'),
-		limit = 10, //books per page
+		limit = 25, //books per page
 		totalNews = 0,
 		pageCount = 1;
 
