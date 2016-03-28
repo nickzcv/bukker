@@ -55,5 +55,65 @@ router.get('/litres-ganres', function (req, res) {
 	})
 });
 
+//litres popular books parser
+router.get('/urls', function (req, res, next) {
+	var db = req.db,
+		litres = db.get('litres');
+
+	var url = 'http://www.litres.ru/luchshie-knigi/page-203/?limit=240';
+
+	console.log(url);
+
+	request(url, function(error, response, html){
+		if(!error){
+			var $ = cheerio.load(html);
+
+			var book = {
+				url:""
+			};
+
+			$('#master_page_div>div:nth-child(3)>div').each(function(i, elem) {
+				book.url = $(this).find('.booktitle div a').attr('href');
+
+				litres.insert({
+					'url' : book.url
+
+				}, function (error, curent) {
+					if (error) {
+						console.log('error');
+					} else {
+						//res.location('/');
+						//res.redirect('/');
+						//console.log(book.url);
+					}
+
+				});//end insert to database
+			});
+
+
+		}
+	});
+
+	next();
+
+
+
+});
+router.get('/url-list', function(req, res) {
+	var db = req.db,
+		litres = db.get('litres');
+
+	litres.find({},{},function(err, litres){
+		if (err) throw err;
+		if (litres) {
+			res.render('urls', res.locals.template_data = {
+				layout: 'main',
+				meta_title: 'urls',
+				litres: litres
+			});
+		}
+
+	});
+});
 
 module.exports = router;
