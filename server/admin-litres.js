@@ -314,7 +314,7 @@ router.post('/admin/litres-scope', function (req, res, next) {
 		}
 	})
 	}
-	next();
+
 });
 
 

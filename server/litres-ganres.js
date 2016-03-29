@@ -60,7 +60,7 @@ router.get('/urls', function (req, res, next) {
 	var db = req.db,
 		litres = db.get('litres');
 
-	var url = 'http://www.litres.ru/luchshie-knigi/page-166/?limit=240';
+	var url = 'http://www.litres.ru/luchshie-knigi/page-161/?limit=240';
 
 	console.log(url);
 
