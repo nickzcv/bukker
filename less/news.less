@@ -2,7 +2,7 @@
 	overflow: hidden;
 
 	.cover {
-		margin: 7px 20px 20px 25px;
+		margin: 7px 20px 0 25px;
 		display: inline-block;
 		float: left;
 
@@ -14,7 +14,7 @@
 
 	.content {
 		margin: 0 0 20px 25px;
-		max-width: 820px;
+		max-width: 900px;
 		color: #414141;
 		font-size: 17px;
 		line-height: 25px;
@@ -54,27 +54,52 @@
 	overflow: hidden;
 
 	.news{
-		margin: 10px;
-		display: inline-block;
+		margin: 0 0 20px;
+
 		position: relative;
-		float: left;
+
 		overflow: hidden;
 
+		.cover{
+			width: 300px;
+			height: 200px;
+			background-size: cover;
+			background-position: 50% 20%;
+			float: left;
+		}
+
 		.title{
-			position: absolute;
-			bottom: 0;
-			width: 100%;
-			padding: 20px;
+
+			margin-left: 310px;
+			width: auto;
+			max-width: 800px;
 			display: block;
-			color: #fff;
+			color: #000;
 			font-size: 21px;
 			line-height: 28px;
-			.lh-background-image(linear-gradient(to bottom, transparent 0%, #000 100%));
 		}
 		img {
 			max-height: 480px;
 			max-width: 370px;
 			min-height: 230px;
 		}
+	}
+}
+
+@media(max-width:1000px) {
+	.news-list .news .title{
+		font-size: 18px;
+		line-height: 26px;
+	}
+}
+@media(max-width:550px) {
+	.news-list .news .cover{
+		width: 95%;
+
+	}
+	.news-list .news .title{
+		margin-left: 0;
+		height: auto;
+		margin-right: 10px;
 	}
 }

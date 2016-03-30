@@ -15,21 +15,10 @@
     <h2>Последние новости:</h2>
     <div class="news-list" >
         {{#each news}}
-            {{#if @first}}
-                <div class="news">
-                    <div class="cover">
-                        <a href="/news/{{url}}"><img src="/news/{{image}}" alt="{{title}}"></a>
-                    </div>
-                    <a href="/news/{{url}}" class="title">{{title}}</a>
-                </div>
-            {{else}}
-                <div class="news">
-                    <div class="cover">
-                        <a href="/news/{{url}}"><img src="/news/{{image}}" alt="{{title}}"></a>
-                    </div>
-                    <a href="/news/{{url}}" class="title">{{title}}</a>
-                </div>
-            {{/if}}
+            <div class="news">
+                <a href="/news/{{url}}" class="cover" style="background-image: url('/news/{{image}}')"></a>
+                <a href="/news/{{url}}" class="title">{{title}}</a>
+            </div>
         {{/each}}
     </div>
     <h2>Новые книги:</h2>
