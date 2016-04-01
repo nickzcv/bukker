@@ -15,7 +15,7 @@ router.get('/news', function (req, res) {
 		res.render('news', res.locals.template_data = {
 			layout: 'main',
 			active: { news: true },
-			meta_title: 'Новости',
+			meta_title: 'Литературные новости и события',
 			news: news
 		});
 	});
