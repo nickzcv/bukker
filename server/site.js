@@ -4,11 +4,11 @@
 	path = require('path'),
 	mime = require('mime');
 
-/* sitemap.xml */
+/* sitemap.xml
 router.get('/sitemap.xml', function(req, res) {
 	res.sendFile(path.join(__dirname, '../public', 'sitemap.xml'));
 });
-
+ */
 /* Home page. */
 router.get('/', function(req, res) {
 	var db = req.db,
