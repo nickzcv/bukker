@@ -7,17 +7,11 @@
 
 	<div class="news-list">
         {{#each news}}
-            {{#if @first}}
                 <div class="news">
                     <a href="/news/{{url}}" class="cover" style="background-image: url('/news/{{image}}')"></a>
                     <a href="/news/{{url}}" class="title">{{title}}</a>
+                    <div class="short">{{shortNews content}}... <a href="/news/{{url}}" class="more">читать полностью <i class="ion-ios-arrow-right"></i></a></div>
                 </div>
-            {{else}}
-                <div class="news">
-                    <a href="/news/{{url}}" class="cover" style="background-image: url('/news/{{image}}')"></a>
-                    <a href="/news/{{url}}" class="title">{{title}}</a>
-                </div>
-            {{/if}}
         {{/each}}
 	</div>
 

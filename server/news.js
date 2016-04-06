@@ -18,6 +18,7 @@ router.get('/news', function (req, res) {
 			meta_title: 'Литературные новости и лучшие подборки книг',
 			news: news
 		});
+
 	});
 
 });

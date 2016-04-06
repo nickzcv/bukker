@@ -5,6 +5,7 @@
 	winston = require('winston'),
 	app = express(),
 	basic_auth = require('basic-auth'),
+	cheerio = require('cheerio'),
 	mongo = require('mongodb'),
 	paginate = require('handlebars-paginate'),
 	monk = require('monk'),
@@ -62,6 +63,14 @@ app.locals.static_root = '/static/';
 app.set('view engine', 'handlebars');
 app.engine('handlebars', exphbs({
 	helpers: {
+		'shortNews': function (content) {
+			if (typeof(content) == "undefined") {
+				return "";
+			}
+			var $ = cheerio.load(content);
+			var text = $('p').text();
+			return text.substring(0,256);
+		},
 		'formatDate': function (date) {
 			if (typeof(date) == "undefined") {
 				return "2016";
@@ -106,7 +115,7 @@ app.use(require('./site.js'));
 app.use(require('./news.js'));
 app.use(require('./catalog.js'));
 app.use(require('./admin-litres.js'));
-//app.use(require('./litres-ganres.js'));
+app.use(require('./litres-ganres.js'));
 app.use(require('./admin.js'));
 app.use(require('./admin-books.js'));
 app.use(require('./admin-news.js'));
