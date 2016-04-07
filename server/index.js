@@ -82,14 +82,14 @@ app.engine('handlebars', exphbs({
 				return " - ";
 			}
 			// These methods need to return a String
-			return date.toGMTString();
+			return date.toLocaleString();
 		},
 		'formatNewsDate': function (date) {
 			if (typeof(date) == "undefined") {
 				return "";
 			}
-			// These methods need to return a String
-			return date.toDateString();
+			var options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+			return date.toLocaleString('ru', options);
 		},
 		'static-root': function (data) {
 			return '/static';
