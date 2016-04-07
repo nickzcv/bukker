@@ -28,8 +28,7 @@ router.get('/news', function (req, res) {
 		if (err) throw err;
 		if (allNews) {
 			totalNews = allNews.length;
-			pageCount = Math.ceil(totalBooks / limit);
-			if(pageCount<0)pageCount=0;
+			pageCount = Math.ceil(totalNews / limit);
 
 			var options = {
 				"limit": limit,
