@@ -135,7 +135,21 @@ router.get('/ganre/:url', function(req, res, next) {
 	var db = req.db,
 		url = String(req.params.url),
 		ganreTitle = "",
-		books = db.get('books');
+		books = db.get('books'),
+		limit = 50, //books per page
+		totalBooks = 0,
+		pageCount = 1;
+
+	//try to get page N
+	var page =  req.query.page;
+	if(!page){
+		page = 1;
+	}
+	//get sort param
+	var sort =  req.query.sort;
+	if(!sort){
+		sort = {date : -1}
+	}
 
 	//get ganre title
 	books.findOne({
@@ -151,22 +165,48 @@ router.get('/ganre/:url', function(req, res, next) {
 			//get books by ganre
 			books.find({
 				"ganres.url": url
-			}, function (err, books) {
+			}, function (err, allBooksInGanre) {
 				if (err) throw err;
-				if (books) {
-					res.render('ganre', res.locals.template_data = {
-						layout: 'main',
-						active: { ganres: true },
-						meta_title: ganreTitle,
-						books: books
-					});
+				if (allBooksInGanre) {
+					totalBooks = allBooksInGanre.length;
+					pageCount = Math.ceil(totalBooks / limit);
+
+					var options = {
+						"limit": limit,
+						"skip": limit*(page-1),
+						"sort": sort
+					};
+
+					//get books by ganre
+					books.find({
+						"ganres.url": url
+					},options, function (err, books) {
+						if (err) throw err;
+						if (books) {
+							res.render('ganre', res.locals.template_data = {
+								layout: 'main',
+								active: { ganres: true },
+								meta_title: ganreTitle,
+								meta_total_books: totalBooks,
+								pagination: {
+									page: page,
+									pageCount: pageCount
+								},
+								books: books
+							});
+						} else {
+							next();
+						}
+					});//end get books by ganre
+
 				} else {
 					next();
 				}
-			});//end get books by ganre
+			});//end get books
 		} else {
 			next();
 		}
+
 	});
 
 });
