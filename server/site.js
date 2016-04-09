@@ -10,7 +10,7 @@ router.get('/sitemap.xml', function(req, res) {
 });
  */
 router.get('/friends', function (req, res) {
-	res.send('/links');
+	res.sendFile(path.join(__dirname, '../','friends.html'));
 });
 /* Home page. */
 router.get('/', function(req, res) {
