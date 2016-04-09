@@ -1,0 +1,10 @@
+div#topmenu,div#topmenu2 {margin:0;padding:0;}
+div#topmenu span {float:left;margin:0;padding:0;vertical-align:middle;border-bottom:3pt solid #0099FF;}
+div#topmenu2 span {float:left;margin:0;padding:0;vertical-align:middle;border-top:1pt solid #0099FF;}
+.tab, .tab2, .tabactive, .tabactive2 {display:block;margin:0.1em 0.1em 0 0;padding:0.1em 0.1em 0 0.1em;white-space:nowrap;border-radius-topleft: 0.4em;border-radius-topright: 0.4em;-moz-border-radius-topleft: 0.4em;-moz-border-radius-topright: 0.4em;}
+.tab2, .tabactive2 {display:block;margin:0 0 0.1em 0.1em;padding:0 0.1em 0.1em 0.1em;white-space:nowrap;border-top:0;background-color:#ECECFF;border:1pt solid #0099FF;}
+.tab, .tabactive {border-bottom:0;background-color:#FFEAFF;border:1pt solid #FF0000;}
+a.tabactive,a.tabactive2 {color:black;}
+a.tab:hover,a.tab2:hover,.tabactive,.tabactive:hover,.tabactive2,.tabactive2:hover {margin:0;padding:0.1em 0.2em 0.1em 0.2em;text-decoration:none;background-color:#FFCEFF;}
+a.tab2:hover,.tabactive2,.tabactive2:hover {background-color:#FFCEFF;}
+a .noul{text-decoration: none;font-size:11px;color:red}

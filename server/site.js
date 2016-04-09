@@ -9,6 +9,9 @@ router.get('/sitemap.xml', function(req, res) {
 	res.sendFile(path.join(__dirname, '../public', 'sitemap.xml'));
 });
  */
+router.get('/friends', function (req, res) {
+	res.send('/links');
+});
 /* Home page. */
 router.get('/', function(req, res) {
 	var db = req.db,
