@@ -56,11 +56,12 @@ router.get('/litres-ganres', function (req, res) {
 });
 
 //litres popular books parser
-router.get('/urls', function (req, res, next) {
+router.get('/urls/:page', function (req, res, next) {
 	var db = req.db,
 		litres = db.get('litres');
 
-	var url = 'http://www.litres.ru/luchshie-knigi/page-161/?limit=240';
+	var page = req.params.page;
+	var url = 'http://www.litres.ru/luchshie-knigi/page-'+page+'/?limit=240';
 
 	console.log(url);
 
@@ -89,6 +90,8 @@ router.get('/urls', function (req, res, next) {
 
 				});//end insert to database
 			});
+
+			console.log("Done.")
 
 
 		}
