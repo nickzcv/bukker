@@ -25,7 +25,7 @@ router.get('/', function(req, res) {
 				if (err) throw err;
 				res.render('home', res.locals.template_data = {
 					layout: 'main',
-					meta_title: 'Буккер - рейтинги книг',
+					meta_title: 'Буккер - рейтинг книг',
 					book: books,
 					news: news
 				});
