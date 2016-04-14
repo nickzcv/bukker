@@ -1,0 +1,45 @@
+<div class="main">
+
+	<div class="pageHeaderInner">
+        <i class="ion-ios-search"></i>
+        <h1 class="search">Ищем: <b>{{meta_title}}</b></h1>
+	</div>
+	<div class="book-list">
+		{{#each books}}
+		<div class="book">
+            <div class="cover">
+                <!--<div class="overlay"></div>-->
+                <a href="/book/{{url}}"><img src="{{main-root}}covers/{{cover}}" alt="{{title}}"></a>
+            </div>
+			<a href="/book/{{url}}" class="title">{{title}}</a>
+			<div class="author">
+				{{#each authors}}
+					{{this.name}}{{#unless @last}},{{/unless}}
+				{{/each}}
+			</div>
+			<div class="stars">
+				{{#each ratings}}
+					{{#if @first}}
+					<div class="ratingBox">
+						{{#each this}}
+                            <meta name="{{@key}}" content="{{this}}">
+						{{/each}}
+					</div>
+					{{/if}}
+				{{else}}
+					<div class="ratingBoxEmpty">
+						<i class="ion-android-star-outline"></i>
+						<i class="ion-android-star-outline"></i>
+						<i class="ion-android-star-outline"></i>
+						<i class="ion-android-star-outline"></i>
+						<i class="ion-android-star-outline"></i>
+					</div>
+				{{/each}}
+			</div>
+		</div>
+        {{else}}
+            Извините, но по вашему запросу книг не найдено...
+		{{/each}}
+	</div>
+
+</div>

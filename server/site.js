@@ -1,7 +1,9 @@
 ﻿var express    = require('express'),
 	router     = express.Router(),
 	request = require('request'),
+	getSlug = require('speakingurl'),
 	path = require('path'),
+	bodyparser = require('body-parser'),
 	mime = require('mime');
 
 /* sitemap.xml
@@ -272,6 +274,32 @@ router.get('/tag/:url', function(req, res, next) {
 
 });
 
+router.use(bodyparser.urlencoded({
+	extended: false
+}));
 
+router.post('/search', function(req, res) {
+	var db = req.db,
+		string = String(req.body.searching),
+		slug = getSlug(string.toLowerCase()),
+		books = db.get('books');
+	console.log(string);
+	console.log(slug);
+
+	//books.find({title:string},{limit:25},function(err, books){
+	books.find({url:slug},{limit:25},function(err, books){
+		if (err) res.json(err);
+		if (books) {
+			res.render('search', res.locals.template_data = {
+				layout: 'main',
+				meta_title: string,
+				books: books
+			});
+			//console.log(book);
+		} else {
+			next();
+		}
+	});
+});
 
 module.exports = router;
