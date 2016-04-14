@@ -286,8 +286,13 @@ router.post('/search', function(req, res) {
 	console.log(string);
 	console.log(slug);
 
-	//books.find({title:string},{limit:25},function(err, books){
-	books.find({url:slug},{limit:25},function(err, books){
+	var query = {
+		title: {
+			$regex: string,
+			$options: 'i' //i: ignore case, m: multiline, etc
+		}
+	};
+	books.find(query,function(err, books){
 		if (err) res.json(err);
 		if (books) {
 			res.render('search', res.locals.template_data = {
