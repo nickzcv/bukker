@@ -14,6 +14,10 @@ router.get('/sitemap.xml', function(req, res) {
 router.get('/friends.html', function (req, res) {
 	res.sendFile(path.join(__dirname, '../','friends.html'));
 });
+//robots.txt
+router.get('/robots.txt', function (req, res) {
+	res.sendfile('robots.txt')
+});
 /* Home page. */
 router.get('/', function(req, res) {
 	var db = req.db,
