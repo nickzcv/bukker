@@ -287,8 +287,6 @@ router.post('/search', function(req, res) {
 		string = String(req.body.searching),
 		slug = getSlug(string.toLowerCase()),
 		books = db.get('books');
-	console.log(string);
-	console.log(slug);
 
 	var query = {
 		title: {
@@ -296,7 +294,7 @@ router.post('/search', function(req, res) {
 			$options: 'i' //i: ignore case, m: multiline, etc
 		}
 	};
-	books.find(query,function(err, books){
+	books.find(query,{limit:150},function(err, books){
 		if (err) res.json(err);
 		if (books) {
 			res.render('search', res.locals.template_data = {
