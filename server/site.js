@@ -88,7 +88,7 @@ router.get('/book/:url', function(req, res, next) {
 router.get('/books', function(req, res) {
 	var db = req.db,
 		books = db.get('books'),
-		limit = 25, //books per page
+		limit = 33, //books per page
 		totalBooks = 0,
 		pageCount = 1;
 
