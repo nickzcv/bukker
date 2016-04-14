@@ -285,7 +285,6 @@ router.use(bodyparser.urlencoded({
 router.post('/search', function(req, res) {
 	var db = req.db,
 		string = String(req.body.searching),
-		slug = getSlug(string.toLowerCase()),
 		books = db.get('books');
 
 	var query = {
@@ -302,7 +301,6 @@ router.post('/search', function(req, res) {
 				meta_title: string,
 				books: books
 			});
-			//console.log(book);
 		} else {
 			next();
 		}
