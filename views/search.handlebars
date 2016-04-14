@@ -5,7 +5,7 @@
         <h1 class="searching">Ищем: <b>{{meta_title}}</b></h1>
 
         <div class="search">
-            <form action="search" method="post">
+            <form action="/search" method="post">
                 <div class="right-inner-icon">
                     <i class="ion-ios-search"></i>
                     <input type="search" name="searching"  placeholder="Найти книгу..." />
@@ -47,7 +47,7 @@
 			</div>
 		</div>
         {{else}}
-            Извините, но по вашему запросу книг не найдено...
+            Извините, но по запросу <i>"{{meta_title}}"</i> книг не найдено...<br>
 		{{/each}}
 	</div>
 

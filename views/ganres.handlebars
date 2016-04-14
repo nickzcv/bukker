@@ -3,6 +3,14 @@
 	<div class="pageHeader">
         <i class="ion-ios-color-filter-outline"></i>
 		<h1>{{meta_title}}</h1>
+        <div class="search">
+            <form action="/search" method="post">
+                <div class="right-inner-icon">
+                    <i class="ion-ios-search"></i>
+                    <input type="search" name="searching"  placeholder="Найти книгу..." />
+                </div>
+            </form>
+        </div>
 	</div>
 	<div class="ganre-list">
 		{{#each ganre}}
