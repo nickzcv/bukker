@@ -2,7 +2,16 @@
 
 	<div class="pageHeaderInner">
         <i class="ion-ios-search"></i>
-        <h1 class="search">Ищем: <b>{{meta_title}}</b></h1>
+        <h1 class="searching">Ищем: <b>{{meta_title}}</b></h1>
+
+        <div class="search">
+            <form action="search" method="post">
+                <div class="right-inner-icon">
+                    <i class="ion-ios-search"></i>
+                    <input type="search" name="searching"  placeholder="Найти книгу..." />
+                </div>
+            </form>
+        </div>
 	</div>
 	<div class="book-list">
 		{{#each books}}

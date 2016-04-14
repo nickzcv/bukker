@@ -65,32 +65,6 @@
 			font-size: 27px;
 			color: #ccc;
 		}
-		.search{
-			position: absolute;
-			right: 50px;
-			top: 20px;
-			width: 40%;
-
-			.right-inner-icon i {
-				position: absolute;
-				top: auto;
-				left: auto;
-				right: 0;
-				padding: 10px 12px;
-				pointer-events: none;
-			}
-			input[type=search] , input[type=search] :focus{
-				background-color: transparent;
-				border: 1px solid #ddd;
-				color: #626262;
-				font-size: 16px;
-				margin: 0;
-				padding: 15px;
-				outline: none;
-				width: 100%;
-				height: 45px;
-			}
-		}
 		//Settings block
 		#settings{
 			position: absolute;
@@ -138,7 +112,7 @@
 			overflow: hidden;
 			padding-top: 31px;
 			line-height: normal;
-			&.search{
+			&.searching{
 				color: #999;
 			}
 			b{
@@ -154,6 +128,35 @@
 			left: 15px;
 			font-size: 27px;
 			color: grey;
+		}
+	}
+
+	.pageHeader, .pageHeaderInner{
+		.search{
+			position: absolute;
+			right: 50px;
+			top: 20px;
+			width: 40%;
+
+			.right-inner-icon i {
+				position: absolute;
+				top: auto;
+				left: auto;
+				right: 0;
+				padding: 10px 12px;
+				pointer-events: none;
+			}
+			input[type=search] , input[type=search] :focus{
+				background-color: transparent;
+				border: 1px solid #ddd;
+				color: #626262;
+				font-size: 16px;
+				margin: 0;
+				padding: 15px;
+				outline: none;
+				width: 100%;
+				height: 45px;
+			}
 		}
 	}
 
