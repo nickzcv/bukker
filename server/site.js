@@ -103,10 +103,10 @@ router.get('/books', function(req, res) {
 		sort = {}
 	}
 
-	books.find({},{},function(err, allBooks){
-		if (err) throw err;
-		if (allBooks) {
-			totalBooks = allBooks.length;
+	//books.find({},{},function(err, allBooks){
+		//if (err) throw err;
+		//if (allBooks) {
+			totalBooks = 20355;//allBooks.length;
 			pageCount = Math.ceil(totalBooks / limit);
 
 			var options = {
@@ -130,10 +130,10 @@ router.get('/books', function(req, res) {
 				});
 			});
 
-		} else {
-			console.log("error")
-		}
-	});
+		//} else {
+		//	console.log("error")
+		//}
+	//});
 	//cookie test
 	//res.cookie('sorting', 'dateAsk2');
 	//console.log("Cookies: ", req.cookies.sorting);
