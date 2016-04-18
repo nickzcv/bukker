@@ -287,6 +287,9 @@ router.post('/search', function(req, res) {
 		string = String(req.body.searching),
 		books = db.get('books');
 
+	console.log(req.body.searching);
+	console.log(string);
+
 	var query = {
 		title: {
 			$regex: string,
