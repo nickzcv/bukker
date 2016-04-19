@@ -106,7 +106,7 @@ router.get('/books', function(req, res) {
 	//books.find({},{},function(err, allBooks){
 		//if (err) throw err;
 		//if (allBooks) {
-			totalBooks = 20355;//allBooks.length;
+			totalBooks = 20797;//allBooks.length;
 			pageCount = Math.ceil(totalBooks / limit);
 
 			var options = {
