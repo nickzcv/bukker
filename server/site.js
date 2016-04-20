@@ -31,7 +31,7 @@ router.get('/', function(req, res) {
 				if (err) throw err;
 				res.render('home', res.locals.template_data = {
 					layout: 'main',
-					meta_title: 'Буккер - рейтинг книг',
+					meta_title: 'Рейтинг книг на Буккер.ру — выбирайте, читайте и скачивайте электронные книги',
 					book: books,
 					news: news
 				});
@@ -46,7 +46,7 @@ router.get('/contacts', function(req, res) {
 	res.render('contacts', res.locals.template_data = {
 		layout: 'main',
 		active: { contacts: true },
-		meta_title: 'Буккер - страница обратной связи'
+		meta_title: 'Буккер.ру — страница обратной связи'
 	});
 });
 
@@ -55,7 +55,7 @@ router.get('/info', function(req, res) {
 	res.render('info', res.locals.template_data = {
 		layout: 'main',
 		active: { info: true },
-		meta_title: 'Буккер - информация о сайте'
+		meta_title: 'Буккер.ру — информация о сайте'
 	});
 });
 
@@ -120,7 +120,7 @@ router.get('/books', function(req, res) {
 				res.render('books', res.locals.template_data = {
 					layout: 'main',
 					active: { books: true },
-					meta_title: 'Книги',
+					meta_title: 'Рейтинг электронных книг на Буккер.ру',
 					meta_total_books: totalBooks,
 					pagination: {
 						page: page,
@@ -232,7 +232,7 @@ router.get('/ganres', function (req, res) {
 		if (err) throw err;
 		res.render('ganres', res.locals.template_data = {
 			layout: 'main',
-			meta_title: 'Жанры',
+			meta_title: 'Книги по Жанрам',
 			active: { ganres: true },
 			ganre: ganres
 		});
