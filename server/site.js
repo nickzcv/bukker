@@ -120,7 +120,7 @@ router.get('/books', function(req, res) {
 				res.render('books', res.locals.template_data = {
 					layout: 'main',
 					active: { books: true },
-					meta_title: 'Рейтинг электронных книг на Буккер.ру',
+					meta_title: 'Книги',
 					meta_total_books: totalBooks,
 					pagination: {
 						page: page,

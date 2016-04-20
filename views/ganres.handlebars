@@ -15,12 +15,16 @@
 	<div class="ganre-list">
 		{{#each ganre}}
 			<div class="ganre">
-				<a href="{{this.url}}">{{this.title}}</a>
-				<div>
-					{{#each this.subGanres }}<a href="ganre/{{@key}}">{{this}}</a>{{/each}}
-				</div>
-			</div>
+				<ul>
+                    {{this.title}}
 
+                    {{#each this.subGanres }}
+                    <li>
+                        <a href="ganre/{{@key}}">{{this}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+			</div>
 		{{/each}}
 	</div>
 

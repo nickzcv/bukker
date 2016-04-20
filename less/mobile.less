@@ -5,10 +5,22 @@
 }
 
 @media(max-width:767px) {
-
+	.main .pageHeader, .main .pageHeaderInner{
+		.search{
+			position: absolute;
+			right: 20px;
+			top: 20px;
+			width: 30%;
+			background-color: #fff;
+			min-width: 150px;
+		}
+	}
 }
 
 @media(max-width:600px) {
+	.main .book-list {
+		margin: 20px 0 0 20px;
+	}
 
 	.main .pageHeaderInner h1, .main .pageHeaderBook h1 {
 		font-size: 20px;
@@ -28,6 +40,37 @@
 	.main .newsPage .cover img{
 		height: auto;
 		width: 100%;
+	}
+
+	.main .pageHeader, .main .pageHeaderInner{
+		.search{
+			position: absolute;
+			left: 10px;
+			top: 76px;
+			width: 95%;
+			background-color: transparent;
+			min-width: 150px;
+
+			.right-inner-icon i {
+				position: absolute;
+				top: auto;
+				left: auto;
+				right: 0;
+				padding: 5px 12px;
+				pointer-events: none;
+			}
+			input[type=search] , input[type=search] :focus{
+				background-color: transparent;
+				border: 1px solid #ddd;
+				color: #626262;
+				font-size: 16px;
+				margin: 0;
+				padding: 15px;
+				outline: none;
+				width: 100%;
+				height: 35px;
+			}
+		}
 	}
 
 }

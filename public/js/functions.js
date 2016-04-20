@@ -8,8 +8,8 @@ $( document ).ready(function() {
 		e.preventDefault();
 	});
 
+	//Home header title slider on click
 	if( $("#bukker").length ){
-
 		$("#bukker .sub").on('click', function(e){
 			e.preventDefault();
 			var selected = $(".visible").removeClass("visible");
@@ -27,12 +27,6 @@ $( document ).ready(function() {
 
 (function ($) {
 	'use strict';
-
-
-	$(".ganre > a").on('click', function(e){
-		e.preventDefault();
-		$(this).parent().toggleClass("active");
-	});
 
 
 	//rating UI part
