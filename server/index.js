@@ -82,7 +82,7 @@ app.engine('handlebars', exphbs({
 				return " - ";
 			}
 			// These methods need to return a String
-			return date.toLocaleString();
+			return date.toLocaleDateString();
 		},
 		'formatNewsDate': function (date) {
 			if (typeof(date) == "undefined") {

@@ -1,7 +1,7 @@
-<div class="main">
+<div class="main home">
 
 	<div class="pageHeader">
-		<h1 id="bukker">Буккер
+		<h1 id="bukker" style="display: none">Буккер
             <span class="bracket">{</span>
             <span>
                 <span class="sub visible">Рейтинги книг <b class="ion-ios-star-outline star"></b></span>
@@ -20,17 +20,24 @@
             </form>
         </div>
 	</div>
-    <h2>Последние новости:</h2>
-    <div class="news-list" >
-        {{#each news}}
-            <div class="news">
-                <a href="/news/{{url}}" class="cover" style="background-image: url('/news/{{image}}')"></a>
-                <a href="/news/{{url}}" class="title">{{title}}</a>
-                <div class="short">{{shortNews content}}... <a href="/news/{{url}}" class="more">читать полностью <i class="ion-ios-arrow-right"></i></a></div>
-            </div>
-        {{/each}}
+
+    <!-- News -->
+    <div class="home-news">
+        <h2><span>Читайте на Буккере</span></h2>
+        <div class="news-list" >
+            {{#each news}}
+                <div class="news">
+                    <a href="/news/{{url}}" class="cover" style="background-image: url('/news/{{image}}')"></a>
+                    <a href="/news/{{url}}" class="title">{{title}}</a>
+                    <div class="short">{{shortNews content}}</div>
+
+              </div>
+            {{/each}}
+        </div>
     </div>
-    <h2>Новые книги:</h2>
+
+
+    <h2><span>Новые книги</span></h2>
 	<div class="book-list">
 		{{#each book}}
 		<div class="book">
