@@ -88,8 +88,7 @@ app.engine('handlebars', exphbs({
 			if (typeof(date) == "undefined") {
 				return "";
 			}
-			var options = { year: 'numeric', month: 'numeric', day: 'numeric' };
-			return date.toLocaleString('ru', options);
+			return date.toDateString();
 		},
 		'static-root': function (data) {
 			return '/static';
