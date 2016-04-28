@@ -100,7 +100,7 @@ router.get('/books', function(req, res) {
 	//get sort param
 	var sort =  req.query.sort;
 	if(!sort){
-		sort = {}
+		sort = {date:-1}
 	}
 
 	//books.find({},{},function(err, allBooks){
