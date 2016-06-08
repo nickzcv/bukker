@@ -299,7 +299,7 @@ router.post('/admin/litres-scope', function (req, res, next) {
 								res.location('/admin/litres');
 								res.redirect('/admin/litres');
 							} else {
-								download(cover, 'covers/'+newName, function(){
+								download('http:'+cover, 'covers/'+newName, function(){
 									//res.location('/admin/litres');
 									//res.redirect('/admin/litres');
 								});
