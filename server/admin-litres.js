@@ -150,7 +150,7 @@ router.post('/admin/litres', function (req, res) {
 								res.location('/admin/litres');
 								res.redirect('/admin/litres');
 							} else {
-								download(cover, 'covers/'+newName, function(){
+								download('http:'+cover, 'covers/'+newName, function(){
 									res.location('/admin/litres');
 									res.redirect('/admin/litres');
 								});
