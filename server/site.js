@@ -17,7 +17,7 @@ router.get('/friends.html', function (req, res) {
 */
 //robots.txt
 router.get('/robots.txt', function (req, res) {
-	res.sendfile('robots.txt')
+	res.sendFile('robots.txt')
 });
 /* Home page. */
 router.get('/', function(req, res) {
