@@ -57,6 +57,7 @@ router.get('/contacts', function(req, res) {
 			// result is now `3'
 			// output is now `One'.
 			// printed is now `Two'.
+			console.log(result);
 		});
 	});
 });
