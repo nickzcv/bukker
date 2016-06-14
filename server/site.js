@@ -5,6 +5,7 @@
 	path = require('path'),
 	bodyparser = require('body-parser'),
 	mime = require('mime');
+var execPhp = require('exec-php');
 
 /* sitemap.xml
 router.get('/sitemap.xml', function(req, res) {
@@ -48,6 +49,15 @@ router.get('/contacts', function(req, res) {
 		layout: 'main',
 		active: { contacts: true },
 		meta_title: 'Буккер.ру — страница обратной связи'
+	});
+	execPhp('file.php', function(error, php, outprint){
+		// outprint is now `One'.
+
+		php.my_function(1, 2, function(err, result, output, printed){
+			// result is now `3'
+			// output is now `One'.
+			// printed is now `Two'.
+		});
 	});
 });
 

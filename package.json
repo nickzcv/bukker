@@ -20,6 +20,7 @@
     "multer": "^1.1.0",
     "path": "^0.12.7",
     "request": "latest",
+    "run-php": "0.0.1",
     "speakingurl": "^9.0.0",
     "winston": "^2.1.1"
   },
