@@ -91,7 +91,12 @@ app.engine('handlebars', exphbs({
 			}
 			return date.toDateString();
 		},
-		'links': function () {
+		'links1': function () {
+			execPhp('server/sape.php', function(error, php, outprint){
+				return outprint;
+			})
+		},
+		'links2': function () {
 			execPhp('server/mainlink.php', function(error, php, outprint){
 				return outprint;
 			})
