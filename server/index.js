@@ -92,7 +92,7 @@ app.engine('handlebars', exphbs({
 			return date.toDateString();
 		},
 		'links': function () {
-			execPhp('file.php', function(error, php, outprint){
+			execPhp('server/mainlink.php', function(error, php, outprint){
 				return outprint;
 			})
 		},

@@ -6,7 +6,6 @@
      require_once(realpath($_SERVER['DOCUMENT_ROOT'].'/'._SAPE_USER.'/sape.php'));
      $sape = new SAPE_client();
 
-
      echo $sape->return_links($n);
 
 ?>
