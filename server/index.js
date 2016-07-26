@@ -9,8 +9,7 @@
 	mongo = require('mongodb'),
 	paginate = require('handlebars-paginate'),
 	monk = require('monk'),
-	db = monk('localhost:27017/bukker'),
-	execPhp = require('exec-php');
+	db = monk('localhost:27017/bukker');
 
 app.use(cookieParser());
 // Make our db accessible to our router
@@ -90,16 +89,6 @@ app.engine('handlebars', exphbs({
 				return "";
 			}
 			return date.toDateString();
-		},
-		'links1': function () {
-			execPhp('server/sape.php', function(error, php, outprint){
-				return outprint;
-			})
-		},
-		'links2': function () {
-			execPhp('server/mainlink.php', function(error, php, outprint){
-				return outprint;
-			})
 		},
 		'static-root': function (data) {
 			return '/static';
