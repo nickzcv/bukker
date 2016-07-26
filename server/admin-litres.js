@@ -117,7 +117,7 @@ router.post('/admin/litres', function (req, res) {
 			book.cover = newName;
 
 			var litresid = $('link[rel=shortlink]').attr("href");
-			book.litresid = litresid.slice(21);
+			book.litresid = litresid.slice(22);
 
 			book.url = getSlug(book.title);
 
@@ -266,7 +266,7 @@ router.post('/admin/litres-scope', function (req, res, next) {
 			book.cover = newName;
 
 			var litresid = $('link[rel=shortlink]').attr("href");
-			book.litresid = litresid.slice(21);
+			book.litresid = litresid.slice(22);
 
 			book.url = getSlug(book.title);
 
